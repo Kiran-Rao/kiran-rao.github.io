@@ -7,5 +7,5 @@ exclude:
 title: "Kiran Rao"
 author: "Kiran Rao"
 description: "Hi, my name is Kiran."
-baseurl: "/" # the subpath of your site, e.g. /blog/
+# baseurl: "/"
 url: "https://kiranrao.ca/"
