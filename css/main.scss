@@ -2,11 +2,15 @@
 # Import main.css
 ---
 
+@import "normalize";
+
 body {
   margin: 0;
-  font-family: Lato;
+  font-family: Lato, Helvetica, sans-serif;
   background-color: #fafafa;
   color: #262626;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 header {
