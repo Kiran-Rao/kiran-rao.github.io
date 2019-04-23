@@ -1,0 +1,11 @@
+gems:
+  - jekyll-sitemap
+
+exclude:
+  - "/vendor/"
+
+title: "Kiran Rao"
+author: "Kiran Rao"
+description: "Hi, my name is Kiran."
+baseurl: "/" # the subpath of your site, e.g. /blog/
+url: "https://kiranrao.ca/"
