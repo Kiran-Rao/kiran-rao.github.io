@@ -18,15 +18,55 @@ header {
 }
 
 h1 {
-  font-size: 1.5em;
+  font-size: 1em;
   font-weight: bold;
 }
 
+h2 {
+  font-size: 0.60em;
+}
+
+h3 {
+  font-size: 0.60em;
+}
+
 p {
-  font-size: 1.5em;
+  font-size: 1em;
   font-weight: bold;
+}
+
+@media only screen and (min-width: 45em){
+  h1 {
+    font-size: 1.5em;
+  }
+  p {
+    font-size: 1.5em;
+  }
 }
 
 .wrapper {
   padding: 0 1.5em;
+  max-width: 60em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home-intro {
+  padding: 3em 0;
+}
+
+.home-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-width: 50vh 100vw 0 0;
+  border-color: #fff transparent transparent transparent;
+  border-style: solid;
+  z-index: -100;
+}
+
+@media only screen and (min-width: 45em) {
+  .home-background {
+    border-width: 100vh 100vw 0 0;
+  }
 }
