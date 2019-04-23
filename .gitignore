@@ -1,0 +1,11 @@
+.DS_Store
+
+# Site
+_site
+
+# Sass
+.sass-cache
+
+# Bundler
+.bundle/
+vendor/
