@@ -9,3 +9,5 @@ author: "Kiran Rao"
 description: "Hi, my name is Kiran."
 # baseurl: "/"
 url: "https://kiranrao.ca/"
+
+host: 0.0.0.0 # Local only
