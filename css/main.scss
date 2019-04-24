@@ -17,11 +17,6 @@ header {
   padding: 1.5em 0;
 }
 
-a {
-  color: #262626;
-  text-decoration: none;
-}
-
 h1 {
   font-size: 1em;
   font-weight: bold;
@@ -49,6 +44,11 @@ p {
   p {
     font-size: 1.5em;
   }
+}
+
+.contact-link {
+  color: #262626;
+  text-decoration: none;
 }
 
 .wrapper {
