@@ -17,6 +17,11 @@ header {
   padding: 1.5em 0;
 }
 
+a {
+  color: #262626;
+  text-decoration: none;
+}
+
 h1 {
   font-size: 1em;
   font-weight: bold;
@@ -24,10 +29,12 @@ h1 {
 
 h2 {
   font-size: 0.60em;
+  margin-bottom: 0;
 }
 
 h3 {
   font-size: 0.60em;
+  margin-bottom: 0;
 }
 
 p {
