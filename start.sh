@@ -1,3 +1,3 @@
 #!/bin/zsh
 
-bundler exec jekyll serve --incremental
+bundler exec jekyll serve --source docs --incremental

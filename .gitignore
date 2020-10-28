@@ -2,6 +2,7 @@
 
 # Site
 _site
+docs/.jekyll-metadata
 
 # Sass
 .sass-cache
