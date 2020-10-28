@@ -6,7 +6,7 @@
 
 body {
   margin: 0;
-  font-family: Jost, Helvetica, sans-serif;
+  font-family: 'Nunito', Helvetica, sans-serif;
   background-color: #fafafa;
   color: #262626;
   -webkit-font-smoothing: antialiased;
@@ -15,45 +15,31 @@ body {
 
 header {
   padding: 1.5em 0;
-}
-
-h1 {
-  font-size: 1em;
-  font-weight: 500;
-}
-
-h2 {
-  font-size: 0.6em;
-  font-weight: 500;
-  margin-bottom: 0;
-  text-transform: uppercase;
-}
-
-h3 {
-  font-size: 0.6em;
-  font-weight: 500;
-  margin-bottom: 0;
-  text-transform: uppercase;
+  .site-header {
+    font-size: 1.75em;
+  }
 }
 
 p {
-  font-size: 1em;
-  font-weight: 500;
+  font-size: 1.25em;
 }
 
-@media only screen and (min-width: 45em) {
-  h1 {
-    font-size: 1.5em;
-  }
-  h2 {
-    font-size: 0.9em;
-  }
-  h3 {
-    font-size: 0.9em;
-  }
-  p {
-    font-size: 1.5em;
-  }
+h1 {
+  font-size: 2em;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 1.5em;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+h3 {
+  font-size: 1em;
+  font-weight: 400;
+  margin-bottom: 0;
+  text-transform: uppercase;
 }
 
 .contact-link {
@@ -63,7 +49,7 @@ p {
 
 .wrapper {
   padding: 0 1em;
-  max-width: 60em;
+  max-width: 56em;
   margin-left: auto;
   margin-right: auto;
 }
