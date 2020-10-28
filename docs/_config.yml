@@ -2,12 +2,14 @@ gems:
   - jekyll-sitemap
 
 exclude:
-  - "/vendor/"
+  - '/vendor/'
 
-title: "Kiran Rao"
-author: "Kiran Rao"
-description: "Hi, my name is Kiran."
-# baseurl: "/"
-url: "https://kiranrao.ca/"
+title: 'Kiran Rao'
+subtitle: "I'm a Canadian software engineer based in San Francisco. I enjoy programming, finance, photography, triathlons and cocktails."
+email: 'hi@kiranrao.ca'
+author: 'Kiran Rao'
+description: 'Hi, my name is Kiran.'
+url: 'https://kiranrao.ca/'
+markdown: kramdown
 
 host: 0.0.0.0 # Local only
