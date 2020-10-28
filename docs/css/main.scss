@@ -4,11 +4,13 @@
 
 @import 'normalize';
 
+$text-color: #222;
+
 body {
   margin: 0;
   font-family: 'Nunito', Helvetica, sans-serif;
   background-color: #fafafa;
-  color: #222;
+  color: $text-color;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -43,7 +45,7 @@ h3 {
 }
 
 .contact-link {
-  color: #262626;
+  color: $text-color;
   text-decoration: none;
 }
 
