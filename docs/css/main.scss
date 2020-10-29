@@ -5,11 +5,14 @@
 @import 'normalize';
 
 $text-color: #222;
+$gray-text-color: #666;
+$background-color: #fafafa;
+$background-accent-color: #eee;
 
 body {
   margin: 0;
   font-family: 'Nunito', Helvetica, sans-serif;
-  background-color: #fafafa;
+  background-color: $background-color;
   color: $text-color;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -38,10 +41,24 @@ h2 {
 }
 
 h3 {
-  font-size: 1em;
+  font-size: 1.25em;
   font-weight: 600;
   margin-bottom: 0;
   text-transform: uppercase;
+}
+
+pre.highlight {
+  background-color: $background-accent-color;
+  padding: 1em;
+}
+
+code {
+  font-family: 'monaco', monospace;
+}
+
+time {
+  font-size: 1em;
+  color: $gray-text-color;
 }
 
 .contact-link {
