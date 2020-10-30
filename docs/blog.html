@@ -1,0 +1,13 @@
+---
+layout: post
+title: 'Blog'
+# date: 2020-10-30
+author: Kiran Rao
+---
+
+{% for page in site.posts %}
+<div>
+  <a class="link" href="{{ page.url | prepend: site.baseurl }}"><h3>{{page.title}}</h3></a>
+  <time>{{ page.date | date: "%b %-d, %Y" }}</time>
+</div>
+{% endfor %}
