@@ -9,7 +9,7 @@ subtitle: "I'm a Canadian software engineer based in San Francisco. I enjoy prog
 email: 'hi@kiranrao.ca'
 author: 'Kiran Rao'
 description: 'Hi, my name is Kiran.'
-url: 'https://kiranrao.ca/'
+url: 'https://kiranrao.ca'
 markdown: kramdown
 
 host: 0.0.0.0 # Local only
