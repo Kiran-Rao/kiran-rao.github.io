@@ -9,9 +9,12 @@ $gray-text-color: #666;
 $background-color: #fafafa;
 $background-accent-color: #eee;
 
+$font: 'Avenir', 'Helvetica', sans-serif;
+$font-mono: 'monaco', monospace;
+
 body {
   margin: 0;
-  font-family: avenir, Helvetica, sans-serif;
+  font-family: $font;
   background-color: $background-color;
   color: $text-color;
   -webkit-font-smoothing: antialiased;
@@ -62,7 +65,7 @@ pre.highlight {
 }
 
 code {
-  font-family: 'monaco', monospace;
+  font-family: $font-mono;
   background-color: $background-accent-color;
   font-size: 1rem;
 }
