@@ -1,0 +1,88 @@
+---
+layout: post
+title: 'Weeks of your Life Calculator'
+date: 2021-09-17
+author: Kiran Rao
+---
+
+<p>
+I bought this poster from Kurzgesagt.
+</p>
+<p>
+Here is a tool to use it. 
+</p>
+
+<p>Date of Birth: <input id="dob" /></p>
+
+<p>Event: <input id="event" /></p>
+
+<p>Result: <span id = "res"></span> </p>
+
+
+<script src="{{ "/static/moment.js" | prepend: site.baseurl }}"></script>
+<script>
+  var dobInput = document.getElementById('dob');
+  var eventInput = document.getElementById('event');
+  var resSpan = document.getElementById('res');
+
+  dobInput.value = '2000-01-01';
+  eventInput.value = '2000-01-01';
+
+  // var dobValue = '';
+  dobInput.onblur = (e) => {
+    // dobValue = e.target.value;
+    // var res = recalculate(dobValue, eventValue);
+    getValuesAndRecalculate();
+    resSpan.textContent = res;
+  }
+
+  // var eventValue = '';
+  eventInput.onblur = (e) => {
+    // eventValue = e.target.value;
+    // var res = recalculate(dobValue, eventValue);
+    getValuesAndRecalculate();
+    resSpan.textContent = res;
+  }
+
+  function getValuesAndRecalculate() {
+    dobString = dobInput.value;
+    eventString = eventInput.value;
+    res = recalculate(dobString, eventString);
+  }
+  
+
+  function recalculate(dobString, eventString) { 
+    debugger;
+    var dobParsed;
+    var eventParsed;
+    try { 
+      dobParsed = moment(dobString);
+      eventParsed = moment(eventString);
+    } catch {
+      return "Invalid Input"
+    }
+
+    // var thisYearBday = moment()
+    //   .year(eventParsed.year())
+    //   .month(dobParsed.month())
+    //   .date(dobParsed.date());
+
+    // var lastYearBday = moment()
+    //   .year(eventParsed.year() - 1)
+    //   .month(dobParsed.month())
+    //   .date(dobParsed.date());
+
+    // var lastBday = thisYearBday.isBefore(eventParsed) ? thisYearBday : lastYearBday;
+    // var weeks = eventParsed.clone().subtract(lastBday).week();
+    // var years = eventParsed.clone().subtract(dobParsed).year();
+
+    var diff = eventParsed.clone().subtract(dobParsed);
+    var weeks = diff.weeks() - 1;
+    var years = diff.year() - 1970;
+
+    return ("It's been " + years + " years and " + weeks + " weeks");
+  }
+
+  getValuesAndRecalculate();
+
+</script>
