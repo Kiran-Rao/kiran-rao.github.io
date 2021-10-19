@@ -25,8 +25,11 @@ Here is a tool to use it.
   var eventInput = document.getElementById('event');
   var resSpan = document.getElementById('res');
 
+  // constanst
+  var DOB_STORAGE_KEY = 'dob'
+
   dobDefaultValue = '2000-01-01';
-  dobLocalStorage = localStorage.getItem('dob')
+  dobLocalStorage = localStorage.getItem(DOB_STORAGE_KEY)
 
   dobInput.value = dobLocalStorage || dobDefaultValue;
   eventInput.value = moment().format('YYYY-MM-DD');
@@ -42,7 +45,7 @@ Here is a tool to use it.
   function getValuesAndUpdate() {
     dobString = dobInput.value;
     eventString = eventInput.value;
-    localStorage.setItem('dob', dobString);
+    localStorage.setItem(DOB_STORAGE_KEY, dobString);
     resSpan.textContent = recalculate(dobString, eventString);
   }
   
