@@ -16,7 +16,7 @@ Here is a tool to use it.
 
 <p>Event: <input id="event" /></p>
 
-<p>Result: <span id = "res"></span> </p>
+<p>Event occured on <span id = "res"></span> </p>
 
 
 <script src="{{ "/static/moment.js" | prepend: site.baseurl }}"></script>
@@ -25,21 +25,25 @@ Here is a tool to use it.
   var eventInput = document.getElementById('event');
   var resSpan = document.getElementById('res');
 
-  dobInput.value = '2000-01-01';
-  eventInput.value = '2000-01-01';
+  dobDefaultValue = '2000-01-01';
+  dobLocalStorage = localStorage.getItem('dob')
+
+  dobInput.value = dobLocalStorage || dobDefaultValue;
+  eventInput.value = moment().format('YYYY-MM-DD');
 
   dobInput.onblur = (e) => {
-    resSpan.textContent = getValuesAndRecalculate();
+    getValuesAndUpdate();
   }
 
   eventInput.onblur = (e) => {
-    resSpan.textContent = getValuesAndRecalculate();
+    getValuesAndUpdate();
   }
 
-  function getValuesAndRecalculate() {
+  function getValuesAndUpdate() {
     dobString = dobInput.value;
     eventString = eventInput.value;
-    return recalculate(dobString, eventString);
+    localStorage.setItem('dob', dobString);
+    resSpan.textContent = recalculate(dobString, eventString);
   }
   
 
@@ -58,9 +62,9 @@ Here is a tool to use it.
     var days = diff.dayOfYear();
     var weeks = Math.floor(days / 7) + 1;
 
-    return ("Event occured on Year: " + years + ", Week: " + weeks);
+    return ("Year: " + years + ", Week: " + weeks);
   }
 
-  getValuesAndRecalculate();
+  getValuesAndUpdate();
 
 </script>
