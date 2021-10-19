@@ -28,31 +28,22 @@ Here is a tool to use it.
   dobInput.value = '2000-01-01';
   eventInput.value = '2000-01-01';
 
-  // var dobValue = '';
   dobInput.onblur = (e) => {
-    // dobValue = e.target.value;
-    // var res = recalculate(dobValue, eventValue);
-    getValuesAndRecalculate();
-    resSpan.textContent = res;
+    resSpan.textContent = getValuesAndRecalculate();
   }
 
-  // var eventValue = '';
   eventInput.onblur = (e) => {
-    // eventValue = e.target.value;
-    // var res = recalculate(dobValue, eventValue);
-    getValuesAndRecalculate();
-    resSpan.textContent = res;
+    resSpan.textContent = getValuesAndRecalculate();
   }
 
   function getValuesAndRecalculate() {
     dobString = dobInput.value;
     eventString = eventInput.value;
-    res = recalculate(dobString, eventString);
+    return recalculate(dobString, eventString);
   }
   
 
   function recalculate(dobString, eventString) { 
-    debugger;
     var dobParsed;
     var eventParsed;
     try { 
@@ -62,25 +53,12 @@ Here is a tool to use it.
       return "Invalid Input"
     }
 
-    // var thisYearBday = moment()
-    //   .year(eventParsed.year())
-    //   .month(dobParsed.month())
-    //   .date(dobParsed.date());
+    var diff = eventParsed.clone().subtract(dobParsed).utc();
+    var years = diff.year() - 1970 + 1;
+    var days = diff.dayOfYear();
+    var weeks = Math.floor(days / 7) + 1;
 
-    // var lastYearBday = moment()
-    //   .year(eventParsed.year() - 1)
-    //   .month(dobParsed.month())
-    //   .date(dobParsed.date());
-
-    // var lastBday = thisYearBday.isBefore(eventParsed) ? thisYearBday : lastYearBday;
-    // var weeks = eventParsed.clone().subtract(lastBday).week();
-    // var years = eventParsed.clone().subtract(dobParsed).year();
-
-    var diff = eventParsed.clone().subtract(dobParsed);
-    var weeks = diff.weeks() - 1;
-    var years = diff.year() - 1970;
-
-    return ("It's been " + years + " years and " + weeks + " weeks");
+    return ("Event occured on Year: " + years + ", Week: " + weeks);
   }
 
   getValuesAndRecalculate();
