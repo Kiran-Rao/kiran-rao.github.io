@@ -1,23 +1,34 @@
 ---
 layout: post
-title: 'Weeks of your Life Calculator'
+title: 'Calendar of Your Life Calculator'
 date: 2021-10-23
 author: Kiran Rao
 ---
 
 <p>
-I bought this poster from Kurzgesagt.
+  I bought a
+  <a
+    href="https://shop-us.kurzgesagt.org/collections/posters/products/lifespan-calendar-poster"
+    target="_blank"
+    rel="noopener"
+    >Calendar of Your Life</a
+  >
+  poster from Kurzgesagt. Partly to support the
+  <a href="https://www.youtube.com/c/inanutshell" target="_blank" rel="noopener">Youtube Channel</a> and partly to
+  remind me that life is short.
 </p>
 <p>
-Here is a tool to use it. 
+  I started filling out each bubble. One at a time. In black. It was so... boring. Not just the process of filling
+  bubles, but the end result. Definetly not something I'd display anywhere.
 </p>
+
+<p>S</p>
+
+<p>Here is a tool to use it.</p>
 
 <p>Date of Birth: <input id="dob" /></p>
 
-<p>Event: <input id="event" /></p>
-
-<p>Event occured on <span id = "res"></span> </p>
-
+<p>Event: <input id="event" /> Event occured on <span id="res"></span></p>
 
 <script src="{{ "/static/moment.js" | prepend: site.baseurl }}"></script>
 <script>
@@ -26,21 +37,21 @@ Here is a tool to use it.
   var resSpan = document.getElementById('res');
 
   // constanst
-  var DOB_STORAGE_KEY = 'dob'
+  var DOB_STORAGE_KEY = 'dob';
 
   dobDefaultValue = '2000-01-01';
-  dobLocalStorage = localStorage.getItem(DOB_STORAGE_KEY)
+  dobLocalStorage = localStorage.getItem(DOB_STORAGE_KEY);
 
   dobInput.value = dobLocalStorage || dobDefaultValue;
   eventInput.value = moment().format('YYYY-MM-DD');
 
   dobInput.onblur = (e) => {
     getValuesAndUpdate();
-  }
+  };
 
   eventInput.onblur = (e) => {
     getValuesAndUpdate();
-  }
+  };
 
   function getValuesAndUpdate() {
     dobString = dobInput.value;
@@ -48,16 +59,15 @@ Here is a tool to use it.
     localStorage.setItem(DOB_STORAGE_KEY, dobString);
     resSpan.textContent = recalculate(dobString, eventString);
   }
-  
 
-  function recalculate(dobString, eventString) { 
+  function recalculate(dobString, eventString) {
     var dobParsed;
     var eventParsed;
-    try { 
+    try {
       dobParsed = moment(dobString);
       eventParsed = moment(eventString);
     } catch {
-      return "Invalid Input"
+      return 'Invalid Input';
     }
 
     var diff = eventParsed.clone().subtract(dobParsed).utc();
@@ -65,9 +75,8 @@ Here is a tool to use it.
     var days = diff.dayOfYear();
     var weeks = Math.floor(days / 7) + 1;
 
-    return ("Year: " + years + ", Week: " + weeks);
+    return 'Year: ' + years + ', Week: ' + weeks;
   }
 
   getValuesAndUpdate();
-
 </script>
