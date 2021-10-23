@@ -59,7 +59,8 @@ li {
   font-size: 1.25rem;
 }
 
-pre.highlight {
+.highlight {
+  border-radius: 0.25rem;
   background-color: $background-accent-color;
   padding: 1rem;
 }
