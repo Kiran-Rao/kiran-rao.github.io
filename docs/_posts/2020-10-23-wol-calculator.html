@@ -26,17 +26,16 @@ author: Kiran Rao
 </p>
 
 <div class="highlight">
-  <p>Birth Date: <input id="dob" /></p>
+  <p>Birth Date: <input id="dob" onblur="getValuesAndUpdateAll()" /></p>
   <div id="event_rows">
-    <p>Event: <input id="event" /> <span id="res"></span></p>
+    <p>Event: <input class="event_input" onblur="getValuesAndUpdateAll()" /> <span class="event_res"></span></p>
   </div>
 </div>
 
 <script src="{{ "/static/moment.js" | prepend: site.baseurl }}"></script>
 <script>
   var dobInput = document.getElementById('dob');
-  var eventInput = document.getElementById('event');
-  var resSpan = document.getElementById('res');
+  var eventRows = document.getElementById('event_rows');
 
   // Const
   var DOB_STORAGE_KEY = 'dob';
@@ -47,21 +46,23 @@ author: Kiran Rao
   dobLocalStorage = localStorage.getItem(DOB_STORAGE_KEY);
 
   dobInput.value = dobLocalStorage || dobDefaultValue;
-  eventInput.value = moment().format('YYYY-MM-DD');
 
-  dobInput.onblur = (e) => {
-    getValuesAndUpdate();
-  };
+  function getValuesAndUpdateAll() {
+    for (var i = 0; i < eventRows.children.length; i++) {
+      child = eventRows.children.item(i);
+      getValuesAndUpdate(child)
+    }
+  }
 
-  eventInput.onblur = (e) => {
-    getValuesAndUpdate();
-  };
+  function getValuesAndUpdate(row) {
+    debugger;
+    var eventInput = row.getElementsByClassName('event_input').item(0)
+    var eventRes = row.getElementsByClassName('event_res').item(0)
 
-  function getValuesAndUpdate() {
     dobString = dobInput.value;
     eventString = eventInput.value;
     localStorage.setItem(DOB_STORAGE_KEY, dobString);
-    resSpan.textContent = recalculate(dobString, eventString);
+    eventRes.textContent = recalculate(dobString, eventString);
   }
 
   function recalculate(dobString, eventString) {
@@ -86,5 +87,5 @@ author: Kiran Rao
     return 'Event occured on Year: ' + years + ', Week: ' + weeks;
   }
 
-  getValuesAndUpdate();
+  getValuesAndUpdateAll()
 </script>
