@@ -27,7 +27,9 @@ author: Kiran Rao
 
 <div class="highlight">
   <p>Birth Date: <input id="dob" /></p>
-  <p>Event: <input id="event" /> Event occured on <span id="res"></span></p>
+  <div id="event_rows">
+    <p>Event: <input id="event" /> <span id="res"></span></p>
+  </div>
 </div>
 
 <script src="{{ "/static/moment.js" | prepend: site.baseurl }}"></script>
@@ -36,8 +38,10 @@ author: Kiran Rao
   var eventInput = document.getElementById('event');
   var resSpan = document.getElementById('res');
 
-  // constanst
+  // Const
   var DOB_STORAGE_KEY = 'dob';
+  var EVENT_STORAGE_KEY = 'event_'
+  var USE_ONE_INDEX = true;
 
   dobDefaultValue = '2000-01-01';
   dobLocalStorage = localStorage.getItem(DOB_STORAGE_KEY);
@@ -70,12 +74,16 @@ author: Kiran Rao
       return 'Invalid Input';
     }
 
-    var diff = eventParsed.clone().subtract(dobParsed).utc();
-    var years = diff.year() - 1970 + 1;
-    var days = diff.dayOfYear();
-    var weeks = Math.floor(days / 7) + 1;
+    if (!eventParsed.isValid() || !dobParsed.isValid()) {
+      return 'Invalid Input';
+    }
 
-    return 'Year: ' + years + ', Week: ' + weeks;
+    var diff = eventParsed.clone().subtract(dobParsed).utc();
+    var years = diff.year() - 1970 + (USE_ONE_INDEX ? 1 : 0);
+    var days = diff.dayOfYear();
+    var weeks = Math.floor(days / 7) + (USE_ONE_INDEX ? 1 : 0);
+
+    return 'Event occured on Year: ' + years + ', Week: ' + weeks;
   }
 
   getValuesAndUpdate();
