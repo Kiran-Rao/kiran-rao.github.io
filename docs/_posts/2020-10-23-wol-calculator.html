@@ -41,8 +41,6 @@ author: Kiran Rao
   var EVENT_STORAGE_KEY = 'event_'
   var USE_ONE_INDEX = true;
 
-  // Globals
-
   function createRow() {
     rowNumber = eventRows.childElementCount;
     eventRows.insertAdjacentHTML('beforeend', '<p>Event: <input class="event_input" onblur="blurListener(' + rowNumber + ')" /> <span class="event_res"></span></p>');
@@ -63,7 +61,6 @@ author: Kiran Rao
         updateRowAtIndex(i);
     }
   }
-
 
   function blurListener(index) {
     updateRowAtIndex(index);
@@ -140,7 +137,6 @@ author: Kiran Rao
     eventRows.innerHTML = "";
     setup()
   }
-
 
   setup()
 </script>
