@@ -28,6 +28,7 @@ author: Kiran Rao
 <div class="highlight">
   <p>Birth Date: <input id="dob" onblur="getValuesAndUpdateAll()" /></p>
   <div id="event_rows"></div>
+  <button onclick="clearRows()">Clear</button>
 </div>
 
 <script src="{{ "/static/moment.js" | prepend: site.baseurl }}"></script>
@@ -41,10 +42,11 @@ author: Kiran Rao
   var USE_ONE_INDEX = true;
 
   // Globals
-  var num_rows = 0;
 
-  function createRow(rowNumber) {
+  function createRow() {
+    rowNumber = eventRows.childElementCount;
     eventRows.insertAdjacentHTML('beforeend', '<p>Event: <input class="event_input" onblur="blurListener(' + rowNumber + ')" /> <span class="event_res"></span></p>');
+    return rowNumber;
   }
 
   function getValuesAndUpdateAll() {
@@ -54,20 +56,20 @@ author: Kiran Rao
       return;
     }
 
+    localStorage.clear()
     localStorage.setItem(DOB_STORAGE_KEY, dobString);
-
 
     for (var i = 0; i < eventRows.children.length; i++) {
         updateRowAtIndex(i);
     }
   }
 
+
   function blurListener(index) {
     updateRowAtIndex(index);
 
-    if (index >= num_rows - 1) {
-      createRow(index + 1)
-      num_rows = eventRows.childElementCount;
+    if (index >= eventRows.childElementCount - 1) {
+      createRow()
     }
   }
 
@@ -111,26 +113,34 @@ author: Kiran Rao
     dobLocalStorage = localStorage.getItem(DOB_STORAGE_KEY);
     dobInput.value = dobLocalStorage || dobDefaultValue;
 
-    createRow(0);
-    num_rows = eventRows.childElementCount
-
+    var i = 0;
     while (true) {
-      var currentVal = localStorage.getItem(EVENT_STORAGE_KEY + num_rows);
-      if (num_rows == 0 && currentVal == null) {
+      var currentVal = localStorage.getItem(EVENT_STORAGE_KEY + i);
+      if (i == 0 && currentVal == null) {
         currentVal = moment().format('YYYY-MM-DD');
       }
       if (currentVal == null) {
-        return;
+        break;
       }
 
-      var row = eventRows.children.item(num_rows);
-      row.getElementsByClassName('event_input').item(0).value = currentVal;
-      createRow(num_rows + 1);
-      num_rows = eventRows.childElementCount;
+      if (currentVal) {
+        rowNumber = createRow()
+        var row = eventRows.children.item(rowNumber);
+        row.getElementsByClassName('event_input').item(0).value = currentVal;
+      }
+
+      i++
     }
 
     getValuesAndUpdateAll()
   }
+
+  function clearRows() {
+    localStorage.clear()
+    eventRows.innerHTML = "";
+    setup()
+  }
+
 
   setup()
 </script>
