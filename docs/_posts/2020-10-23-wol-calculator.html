@@ -27,9 +27,7 @@ author: Kiran Rao
 
 <div class="highlight">
   <p>Birth Date: <input id="dob" onblur="getValuesAndUpdateAll()" /></p>
-  <div id="event_rows">
-    <p>Event: <input class="event_input" onblur="getValuesAndUpdateAll()" /> <span class="event_res"></span></p>
-  </div>
+  <div id="event_rows"></div>
 </div>
 
 <script src="{{ "/static/moment.js" | prepend: site.baseurl }}"></script>
@@ -42,26 +40,47 @@ author: Kiran Rao
   var EVENT_STORAGE_KEY = 'event_'
   var USE_ONE_INDEX = true;
 
-  dobDefaultValue = '2000-01-01';
-  dobLocalStorage = localStorage.getItem(DOB_STORAGE_KEY);
+  // Globals
+  var num_rows = 0;
 
-  dobInput.value = dobLocalStorage || dobDefaultValue;
+  function createRow(rowNumber) {
+    eventRows.insertAdjacentHTML('beforeend', '<p>Event: <input class="event_input" onblur="blurListener(' + rowNumber + ')" /> <span class="event_res"></span></p>');
+  }
 
   function getValuesAndUpdateAll() {
+    dobString = dobInput.value
+    if (!moment(dobString).isValid()) {
+      alert('TODO: Make this more nice');
+      return;
+    }
+
+    localStorage.setItem(DOB_STORAGE_KEY, dobString);
+
+
     for (var i = 0; i < eventRows.children.length; i++) {
-      child = eventRows.children.item(i);
-      getValuesAndUpdate(child)
+        updateRowAtIndex(i);
     }
   }
 
-  function getValuesAndUpdate(row) {
-    debugger;
-    var eventInput = row.getElementsByClassName('event_input').item(0)
-    var eventRes = row.getElementsByClassName('event_res').item(0)
+  function blurListener(index) {
+    updateRowAtIndex(index);
+
+    if (index >= num_rows - 1) {
+      createRow(index + 1)
+      num_rows = eventRows.childElementCount;
+    }
+  }
+
+  function updateRowAtIndex(index) {
+    child = eventRows.children.item(index);
+
+    var eventInput = child.getElementsByClassName('event_input').item(0);
+    var eventRes = child.getElementsByClassName('event_res').item(0);
 
     dobString = dobInput.value;
     eventString = eventInput.value;
-    localStorage.setItem(DOB_STORAGE_KEY, dobString);
+
+    localStorage.setItem(EVENT_STORAGE_KEY + index, eventString)
     eventRes.textContent = recalculate(dobString, eventString);
   }
 
@@ -87,5 +106,31 @@ author: Kiran Rao
     return 'Event occured on Year: ' + years + ', Week: ' + weeks;
   }
 
-  getValuesAndUpdateAll()
+  function setup() {
+    dobDefaultValue = '2000-01-01';
+    dobLocalStorage = localStorage.getItem(DOB_STORAGE_KEY);
+    dobInput.value = dobLocalStorage || dobDefaultValue;
+
+    createRow(0);
+    num_rows = eventRows.childElementCount
+
+    while (true) {
+      var currentVal = localStorage.getItem(EVENT_STORAGE_KEY + num_rows);
+      if (num_rows == 0 && currentVal == null) {
+        currentVal = moment().format('YYYY-MM-DD');
+      }
+      if (currentVal == null) {
+        return;
+      }
+
+      var row = eventRows.children.item(num_rows);
+      row.getElementsByClassName('event_input').item(0).value = currentVal;
+      createRow(num_rows + 1);
+      num_rows = eventRows.childElementCount;
+    }
+
+    getValuesAndUpdateAll()
+  }
+
+  setup()
 </script>
