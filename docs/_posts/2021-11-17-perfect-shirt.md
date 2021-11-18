@@ -26,7 +26,11 @@ The shirt was perfect in the winter. But as summer began, I realized my mistake.
 
 ### Material Type
 
-Material is the first and most important part of a shirt. The fabric makes a huge difference in how the shirt feels. Cotton is your typical t-shirt material. Looks like a shirt. Feels like a shirt. But, it tends to shrink in the dryer. Once it gets wet, it holds onto moisture. Polyester solves these shortcomings, but has its own. It's commonly used for sports appearal because it handles moisture well. However, it looks and feels like a gym shirt. Unfortunately, gym shirts are not fashionable, despite what 10 year old me thought.
+Material is the first and most important part of a shirt. The fabric makes a huge difference in how the shirt feels.
+
+- Cotton is your typical t-shirt material. Looks like a shirt. Feels like a shirt. But, it tends to shrink in the dryer. Once it gets wet, it holds onto moisture.
+- Polyester solves these shortcomings, but has its own. It's commonly used for sports appearal because it handles moisture well. However, it looks and feels like a gym shirt. Unfortunately, gym shirts are not fashionable, despite what 10 year old me thought.
+- Elastane, sometimes called Spandex/Rayon/Lycra, is a stretchy material mostly used in compression gym gear. It's wrinkle resistant and very stretchy.
 
 ### Material Weight
 
