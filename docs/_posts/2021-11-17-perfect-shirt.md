@@ -42,6 +42,24 @@ There are three main features of cut: size, fit, and length. All three factors v
 
 - Size: S/M/L/XL etc. Usually refers to what the shirt size is around the chest and shoulders.
 - Fit: Regular/Athletic/Slim etc. Usually refers to the size around the waist.
-- Length: Rarely listed, it's how long the shirt is. This one is a guess and check.
+- Length: How long is the shirt? It's rarely listed so guess and check.
+
+### Other Considerations
+
+In addition to being a good shirt, I also considered the following:
+
+- Price: I don't want to buy buying $100 shirts
+- Avalibility: The world is experiencing supply chain issues. Am I able to buy 10 right now?
+- Longevity: Will the specific shirt exist in 10 years? If it's fulfilled from a fast fashion firm, probably not.
+
+## My New Shirt
+
+I ended up buying 14 unique t-shirt from 5 different brands. After 6 months of testing through 3 seasons, I finally found my new standard shirt: The Bella-Canvas 3415. It's perfect for me because:
+
+- Material: a blend of Cotton, Polyester, and Rayon. The best of all three.
+- Weight: 3.8oz. On the lighter side, as I tend to be warm.
+- Cut: I think it looks good. I have yet to have someone tell me otherwise. (In fairness, I don't think anyone actually cares)
+
+I'm not suggesting anyone go out and buy this exact shirt. Each person is different and what works for me might not work for anyone else. I hope this post is helpful in understanding what will make a shirt work for you.
 
 [1] I did not actually "Ditch all my other shirts". I instead donated the bulk of my aging shirt collection to Salvation Army. I kept a few that I really liked for special occations.
