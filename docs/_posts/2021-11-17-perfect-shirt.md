@@ -16,9 +16,7 @@ I found there was a name for this: minimalism. A bunch of these "minimalists" al
 
 Hell yeah! So I did what any reasonable person would do. I picked the first grey t-shirt in sight. Looked good. Felt great. Bought 8 of them. Ditch all my other shirts[1]. Done. That was easy.
 
-```
->  Photo of spread
-```
+<img src="/assets/shirt_spread_old_2.jpg" alt="Old Spread of Shirts" width="100%" >
 
 The shirt was perfect in the winter. But as summer began, I realized my mistake. The super soft cotton proved hot and heavy. Leaving the house for 5 minutes left me drenched in sweat. Over time, the shirt started stretching and shrinking in weird ways. My once perfect shirts become uncomfortable and unflattering. Maybe I should have done some research...
 
