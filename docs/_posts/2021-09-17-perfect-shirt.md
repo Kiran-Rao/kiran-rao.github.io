@@ -26,18 +26,18 @@ The shirt was perfect in the winter. But as summer began, I realized my mistake.
 
 ## Material Type
 
-Material is the first and most obvious oversight. The fabric makes a huge difference in how the shirt feels. Cotton is your typical t-shirt material. Looks like a shirt. Feels like a shirt. But, it tends to shrink in the dryer. Once it gets wet, it holds onto moisture. Polyester solves these shortcomings, but has its own. It's commonly used for sports appearal because it handles moisture well. However, it looks and feels like a gym shirt. Unfortunately, gym shirts are not as fashionable, despite what 10 year old me thought.
+Material is the first and most obvious oversight. The fabric makes a huge difference in how the shirt feels. Cotton is your typical t-shirt material. Looks like a shirt. Feels like a shirt. But, it tends to shrink in the dryer. Once it gets wet, it holds onto moisture. Polyester solves these shortcomings, but has its own. It's commonly used for sports appearal because it handles moisture well. However, it looks and feels like a gym shirt. Unfortunately, gym shirts are not fashionable, despite what 10 year old me thought.
 
 ## Material Weight
 
-Another important, but often overlooked consideration is the material weight. In the US, it's measured as oz/yd^2 (thanks imperial), though most often referred to simply as oz. As one would expect, lighter shirts (3-4oz) are cooler while heavier shirts (6+ oz) tend to be warmer. They also look different. Heavier shirts tend to hold their shape, while lighter shirts tend to drape closer to the body.
+Another often overlooked consideration is the material weight. In the US, it's measured as oz/yd^2 (thanks imperial), though most often referred to simply as oz. As one would expect, lighter shirts (3-4oz) are cooler while heavier shirts (6+ oz) tend to be warmer. They also look different. Heavier shirts tend to hold their shape, while lighter shirts tend to drape closer to the body.
 
 ## Cut
 
 There are three main features of cut: size, fit, and length. All three factors vary from place to place but generally:
 
-- Size: Usually refers to what the shirt size is around the chest and shoulders.
-- Fit: Usually refers to the size around the waist. Generally the fits are regular, athletic and slim.
-- Length: Rarely listed, it's how long the shirt is. This one is very much a guess and check.
+- Size: S/M/L/XL etc. Usually refers to what the shirt size is around the chest and shoulders.
+- Fit: Regular/Athletic/Slim etc. Usually refers to the size around the waist.
+- Length: Rarely listed, it's how long the shirt is. This one is a guess and check.
 
 [1] I did not actually "Ditch all my other shirts". I instead donated the bulk of my aging shirt collection to Salvation Army. I kept a few that I really liked for special occations.
