@@ -14,7 +14,7 @@ I found there was a name for this: minimalism. A bunch of these "minimalists" al
 - Little temptations to buy new clothes
 - Always looking great (or at least consistent)
 
-Hell yeah! So I did what any reasonable person would do. I picked the first grey t-shirt in sight. Looked good. Felt great. Bought 8 of them. Ditch all my other shirts[1]. Done. That was easy.
+Hell yeah! So I did what any reasonable person would do. I picked the first grey t-shirt in sight. Looked good. Felt great. Bought 8 of them. Ditch all my other shirts[^1]. Done. That was easy.
 
 <img src="/assets/shirt_spread_old_2.jpg" alt="Old Spread of Shirts" width="100%" >
 
@@ -60,4 +60,4 @@ I ended up buying 14 unique t-shirt from 5 different brands. After 6 months of t
 
 I'm not suggesting anyone go out and buy this exact shirt. Each person is different and what works for me might not work for anyone else. I hope this post is helpful in understanding what will make a shirt work for you.
 
-[1] I did not actually "Ditch all my other shirts". I instead donated the bulk of my aging shirt collection to Salvation Army. I kept a few that I really liked for special occations.
+[^1]: I did not actually "Ditch all my other shirts". I instead donated the bulk of my aging shirt collection to Salvation Army. I kept a few that I really liked for special occations.
