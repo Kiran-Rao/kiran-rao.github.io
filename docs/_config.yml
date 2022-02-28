@@ -18,5 +18,9 @@ defaults:
       path: 'unpublished/**/*.*'
     values:
       sitemap: false
+  - scope:
+      path: 'assets/**/*.*'
+    values:
+      sitemap: false
 
 host: 0.0.0.0 # Local only
