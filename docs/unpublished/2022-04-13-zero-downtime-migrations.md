@@ -13,7 +13,7 @@ This guide will go through the step by step process of migrating a table `old` t
 
 ## Background
 
-We'll start by defining a schema for ourselves:
+Let's start by defining a schema for ourselves:
 
 ```sql
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
@@ -48,13 +48,115 @@ FROM old
 WHERE old_id = ?;
 ```
 
-### New Schema
+### New schema
 
-### Requirements
+Some time passes and we notice that data is being used exclusively to record a timestamps.
+In addition, `old` is no longer an accurate name, and that `new` would be a lot better.
+In an ideal world, our schema would look something like this:
+
+```sql
+
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+CREATE TABLE IF NOT EXISTS old (
+    new_id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+    created_date TIMESTAMP WITH TIME ZONE NOT NULL
+);
+```
+
+### Migration Requirements
 
 We can further quantify constraints as follows:
 
 - The system must fully respond to requests throughout the migration process
 - No action can take a write lock against a significant percentage of the table
-- No "dangerous" actions
-- We must be able to roll-back any changes to the previous step if there are issues
+- No unsafe operations [^1]
+- We must be able to roll-back any changes to the previous step if we encounter issues
+
+[^1]: https://leopard.in.ua/2016/09/20/safe-and-unsafe-operations-postgresql
+
+## Procedure
+
+### Create a new table
+
+```sql
+CREATE TABLE IF NOT EXISTS old (
+    new_id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+    created_date TIMESTAMP WITH TIME ZONE NOT NULL
+);
+```
+
+### Write to both tables
+
+Now that we have two tables, we write to both simultaneously.
+
+```sql
+-- Create
+WITH new_rows AS (
+    INSERT INTO new (created_date) VALUES (?)
+        RETURNING *
+)
+INSERT
+INTO old (old_id, data)
+SELECT new_id, CAST(created_date AS TEXT)
+FROM new_rows
+RETURNING *;
+
+-- Update
+UPDATE old
+SET data = ?
+WHERE old_id = ?;
+
+UPDATE new
+SET created_date = ?
+WHERE new_id = ?;
+
+
+-- Delete
+DELETE
+FROM old
+WHERE old_id = ?;
+
+DELETE
+FROM new
+WHERE new_id = ?;
+```
+
+Note that our create operation appears slightly more complex than before.
+We are creating a row in the new table, then using the record to populate the values of the old table.
+This is all done in a single transaction to ensure our randomly generated UUIDs in sync.
+
+### Migrate data
+
+Once we know that all new records will be replicated, we can start migrating old records. It should look something like this:
+
+```sql
+INSERT INTO new(new_id, created_date)
+SELECT old_id, CAST(data AS TIMESTAMP)
+FROM OLD
+WHERE NOT EXISTS(SELECT *
+                 FROM NEW
+                 WHERE new_id = OLD.old_id)
+LIMIT 1000
+RETURNING *;
+```
+
+We are inserting values into the `new` table from the `old` table that don't yet exist in `new`.
+To keep the database responsive, we perform the operation in chunks with `limit 1000`.
+This can be tuned up or down depending on the table, though better to migrate in smaller chunks to avoid large write locks.
+
+### Validate Data
+
+The often overlooked step. Before we switch over the reads, we should ensure that our data is fully in sync between tables. Here are a few sample queries to validate.
+
+Are we missing any data?
+
+```sql
+SELECT *
+FROM old
+         FULL OUTER JOIN new ON old_id = new_id
+WHERE new_id IS NULL
+    OR old_id IS NULL
+```
+
+### Switch Reads
