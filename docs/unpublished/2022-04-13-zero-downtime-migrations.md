@@ -13,7 +13,7 @@ This guide will go through the step by step process of migrating a table `old` t
 
 ## Background
 
-Let's start by defining a schema for ourselves:
+Let's define an existing schema for ourselves:
 
 ```sql
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
@@ -92,8 +92,9 @@ Now that we have two tables, we write to both simultaneously.
 ```sql
 -- Create
 WITH new_rows AS (
-    INSERT INTO new (created_date) VALUES (?)
-        RETURNING *
+    INSERT INTO new (created_date)
+    VALUES (?)
+    RETURNING *
 )
 INSERT
 INTO old (old_id, data)
@@ -134,7 +135,7 @@ INSERT INTO new(new_id, created_date)
 SELECT old_id, CAST(data AS TIMESTAMP)
 FROM OLD
 WHERE NOT EXISTS(SELECT *
-                 FROM NEW
+                 FROM new
                  WHERE new_id = OLD.old_id)
 LIMIT 1000
 RETURNING *;
@@ -169,4 +170,43 @@ WHERE CAST(data AS TIMESTAMP) <> created_date
 
 ### Switch Reads
 
-This is usually the
+This is usually the hardest step, since we often have reads in may different places. Since that data is in sync between tables, we can take our time with this part of the migration.
+
+```sql
+SELECT *
+FROM new
+WHERE new_id = ?;
+```
+
+This stage is where we'd update our views, foreign keys, triggers, etc to reference the new table.
+
+### Drop writes
+
+Now that we've switch all reads over to the new system, we no longer need to update the old database. Our new write operations:
+
+```sql
+-- Create
+INSERT INTO new (created_date)
+VALUES (?)
+RETURNING *
+
+-- Update
+UPDATE new
+SET created_date = ?
+WHERE new_id = ?;
+
+-- Delete
+DELETE
+FROM new
+WHERE new_id = ?;
+```
+
+### Cleanup table
+
+When we're confident that our system no longer references the old table, we can drop it.
+
+```sql
+DROP TABLE IF EXISTS old;
+```
+
+Congradulations! You've completed your migration!
