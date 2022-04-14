@@ -52,13 +52,12 @@ WHERE old_id = ?;
 
 Some time passes and we notice that data is being used exclusively to record a timestamps.
 In addition, `old` is no longer an accurate name, and that `new` would be a lot better.
-In an ideal world, our schema would look something like this:
+In the future, we want our schema to look like:
 
 ```sql
-
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
-CREATE TABLE IF NOT EXISTS old (
+CREATE TABLE IF NOT EXISTS new (
     new_id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
     created_date TIMESTAMP WITH TIME ZONE NOT NULL
 );
@@ -80,7 +79,7 @@ We can further quantify constraints as follows:
 ### Create a new table
 
 ```sql
-CREATE TABLE IF NOT EXISTS old (
+CREATE TABLE IF NOT EXISTS new (
     new_id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
     created_date TIMESTAMP WITH TIME ZONE NOT NULL
 );
@@ -143,20 +142,31 @@ RETURNING *;
 
 We are inserting values into the `new` table from the `old` table that don't yet exist in `new`.
 To keep the database responsive, we perform the operation in chunks with `limit 1000`.
-This can be tuned up or down depending on the table, though better to migrate in smaller chunks to avoid large write locks.
+This can be tuned up or down depending on the table, though better to use smaller chunks and avoid large write locks.
 
 ### Validate Data
 
-The often overlooked step. Before we switch over the reads, we should ensure that our data is fully in sync between tables. Here are a few sample queries to validate.
+The often overlooked step. Before we switch over the reads, we should ensure that our data is fully in sync between tables. Here are a few sample queries to validate. The most common culpret was a system we never knew about was writing to this table.
 
-Are we missing any data?
+Are we missing any records?
 
 ```sql
 SELECT *
 FROM old
          FULL OUTER JOIN new ON old_id = new_id
 WHERE new_id IS NULL
-    OR old_id IS NULL
+   OR old_id IS NULL
+```
+
+Is any data inconsistent?
+
+```sql
+SELECT *
+FROM old
+         INNER JOIN new ON old_id = new_id
+WHERE CAST(data AS TIMESTAMP) <> created_date
 ```
 
 ### Switch Reads
+
+This is usually the
