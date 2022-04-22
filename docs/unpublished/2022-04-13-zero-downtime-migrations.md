@@ -82,11 +82,12 @@ CREATE TABLE IF NOT EXISTS new (
 We can further specify the requirements through the migration:
 
 - The system must fully respond to requests throughout the migration process
-- No action can take a write lock against a significant percentage of the table
-- No unsafe operations [^1]
+- No action can take a write lock against a significant percentage of the table[^write_lock]
+- No unsafe operations [^safe_unsafe]
 - We must be able to roll-back any changes to the previous step if we encounter issues
 
-[^1]: [Safe and unsafe operations for high volume PostgreSQL](https://leopard.in.ua/2016/09/20/safe-and-unsafe-operations-postgresql)
+[^safe_unsafe]: [Safe and unsafe operations for high volume PostgreSQL](https://leopard.in.ua/2016/09/20/safe-and-unsafe-operations-postgresql)
+[^write_lock]: [Write Locks](https://www.postgresql.org/docs/current/sql-lock.html)
 
 ## Procedure
 
@@ -223,4 +224,10 @@ When we're confident that our system no longer references the old table, we can 
 DROP TABLE IF EXISTS old;
 ```
 
-Congradulations! You've completed your migration!
+## Done
+
+Congradulations! Migration Complete!
+
+<img alt="Done gif" src="https://media.giphy.com/media/zCME2Cd20Czvy/giphy.gif">
+
+Now the hardest part: explaining to product why their seemingly small request took 3x longer than expected. If it helps you can send them this article. Good luck!
