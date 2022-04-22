@@ -228,6 +228,6 @@ DROP TABLE IF EXISTS old;
 
 Congradulations! Migration Complete!
 
-<img alt="Done gif" src="https://media.giphy.com/media/zCME2Cd20Czvy/giphy.gif">
+<img src="/assets/its_done.gif" alt="It's done GIF">
 
 Now the hardest part: explaining to product why their seemingly small request took 3x longer than expected. If it helps you can send them this article. Good luck!
