@@ -5,15 +5,26 @@ date: 2022-04-14
 author: Kiran Rao
 ---
 
-At The League, a challenge we often faced was migrating database schemas.
-We would often do this when queries were performing poorly, column types incorrect, or the tables were created years ago for a silghtly different use case.
-While this may seem like a straightforward set of SQL commands, it can become a complex coreographed dance on production to be achieved with zero downtime and no undesired data loss.
+At The League, a common task was migrating a database schema.
+This was done to improve query performance, change column names/types, or to adapt data to new use cases.
+While this may seem like a straightforward set of SQL commands, it becomes a complex coreographed dance on production to be achieved with zero downtime.
+The steps are as follows:
 
-This guide will go through the step by step process of migrating a table `old` to `new` in PostgreSQL. While the examples are for a PostgreSQL table migration, the same steps can apply to almost any migration. Note that normalized schema design, index selection, and performance optimization are outside the scope of this guide.
+1. Create the new table
+1. Write to both old and new table
+1. Copy data (in chunks) from old to new
+1. Validate consistency
+1. Switch reads to new table
+1. Stop writes to the old table
+1. Cleanup old table
+
+This guide will go through the step by step process of migrating a table `old` to `new` in PostgreSQL. While the examples are for a PostgreSQL table migration, the same steps can apply to almost any migration. Normalized schema design, index selection, and performance optimization are outside the scope of this guide.
 
 ## Background
 
-Let's define an existing schema for ourselves:
+### Existing Schema
+
+Let's assume we're given an existing schema with a table named `old`:
 
 ```sql
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
@@ -24,7 +35,7 @@ CREATE TABLE IF NOT EXISTS old (
 );
 ```
 
-We also have an API that can run the following CRUD operations against the database:
+We also have an API that can run the following CRUD operations against the table:
 
 ```sql
 -- Create
@@ -48,11 +59,14 @@ FROM old
 WHERE old_id = ?;
 ```
 
-### New schema
+### Desired schema
 
-Some time passes and we notice that data is being used exclusively to record a timestamps.
+The `data` column was type `TEXT` for flexibility.
+It is now used exclusively for timestamps.
+We then get a request from product on a hot codepath to be count all entries between 2 timestamps.
+While this is possible with the current schema, we decided a better approach would be to update `data` to be a `TIMESTAMP` type.
 In addition, `old` is no longer an accurate name, and that `new` would be a lot better.
-In the future, we want our schema to look like:
+We therefore want the schema to look like:
 
 ```sql
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
@@ -65,14 +79,14 @@ CREATE TABLE IF NOT EXISTS new (
 
 ### Migration Requirements
 
-We can further quantify constraints as follows:
+We can further specify the requirements through the migration:
 
 - The system must fully respond to requests throughout the migration process
 - No action can take a write lock against a significant percentage of the table
 - No unsafe operations [^1]
 - We must be able to roll-back any changes to the previous step if we encounter issues
 
-[^1]: https://leopard.in.ua/2016/09/20/safe-and-unsafe-operations-postgresql
+[^1]: [Safe and unsafe operations for high volume PostgreSQL](https://leopard.in.ua/2016/09/20/safe-and-unsafe-operations-postgresql)
 
 ## Procedure
 
@@ -126,9 +140,9 @@ Note that our create operation appears slightly more complex than before.
 We are creating a row in the new table, then using the record to populate the values of the old table.
 This is all done in a single transaction to ensure our randomly generated UUIDs in sync.
 
-### Migrate data
+### Copy data to new table
 
-Once we know that all new records will be replicated, we can start migrating old records. It should look something like this:
+Once we know that all new records will be replicated, we can start copy old records. It should look something like this:
 
 ```sql
 INSERT INTO new(new_id, created_date)
@@ -145,7 +159,7 @@ We are inserting values into the `new` table from the `old` table that don't yet
 To keep the database responsive, we perform the operation in chunks with `limit 1000`.
 This can be tuned up or down depending on the table, though better to use smaller chunks and avoid large write locks.
 
-### Validate Data
+### Validate consistency
 
 The often overlooked step. Before we switch over the reads, we should ensure that our data is fully in sync between tables. Here are a few sample queries to validate. The most common culpret was a system we never knew about was writing to this table.
 
@@ -154,7 +168,7 @@ Are we missing any records?
 ```sql
 SELECT *
 FROM old
-         FULL OUTER JOIN new ON old_id = new_id
+    FULL OUTER JOIN new ON old_id = new_id
 WHERE new_id IS NULL
    OR old_id IS NULL
 ```
@@ -164,11 +178,11 @@ Is any data inconsistent?
 ```sql
 SELECT *
 FROM old
-         INNER JOIN new ON old_id = new_id
+    INNER JOIN new ON old_id = new_id
 WHERE CAST(data AS TIMESTAMP) <> created_date
 ```
 
-### Switch Reads
+### Switch reads
 
 This is usually the hardest step, since we often have reads in may different places. Since that data is in sync between tables, we can take our time with this part of the migration.
 
@@ -180,7 +194,7 @@ WHERE new_id = ?;
 
 This stage is where we'd update our views, foreign keys, triggers, etc to reference the new table.
 
-### Drop writes
+### Stop writes
 
 Now that we've switch all reads over to the new system, we no longer need to update the old database. Our new write operations:
 
