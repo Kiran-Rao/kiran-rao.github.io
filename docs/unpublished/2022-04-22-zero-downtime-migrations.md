@@ -37,6 +37,8 @@ CREATE TABLE IF NOT EXISTS old (
 
 We also have an API that can run the following CRUD operations against the table:
 
+<img class="diagram" src="/assets/migration-old-schema.svg" alt="Old" width="50%" >
+
 ```sql
 -- Create
 INSERT INTO old (data)
@@ -66,7 +68,8 @@ It is now used exclusively for timestamps.
 We then get a request from product on a hot codepath to be count all entries between 2 timestamps.
 While this is possible with the current schema, we decided a better approach would be to update `data` to be a `TIMESTAMP` type.
 In addition, `old` is no longer an accurate name, and that `new` would be a lot better.
-We therefore want the schema to look like:
+
+<img class="diagram" src="/assets/migration-new-schema.svg" alt="New schema" width="50%" >
 
 ```sql
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
@@ -93,6 +96,8 @@ We can further specify the requirements through the migration:
 
 ### Create a new table
 
+<img class="diagram" src="/assets/migration-new-table.svg" alt="Create a new table" width="50%" >
+
 ```sql
 CREATE TABLE IF NOT EXISTS new (
     new_id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
@@ -103,6 +108,8 @@ CREATE TABLE IF NOT EXISTS new (
 ### Write to both tables
 
 Now that we have two tables, we write to both simultaneously.
+
+<img class="diagram" src="/assets/migration-write-both.svg" alt="Write to both tables" width="50%" >
 
 ```sql
 -- Create
@@ -143,7 +150,9 @@ This is all done in a single transaction to ensure our randomly generated UUIDs 
 
 ### Copy data to new table
 
-Once we know that all new records will be replicated, we can start copy old records. It should look something like this:
+Once we know that all new records will be replicated, we can start copy old records.
+
+<img class="diagram" src="/assets/migration-copy-data.svg" alt="Replicate data between tables" width="50%" >
 
 ```sql
 INSERT INTO new(new_id, created_date)
@@ -187,6 +196,8 @@ WHERE CAST(data AS TIMESTAMP) <> created_date
 
 This is usually the hardest step, since we often have reads in may different places. Since that data is in sync between tables, we can take our time with this part of the migration.
 
+<img class="diagram" src="/assets/migration-switch-reads.svg" alt="Switch reads" width="50%" >
+
 ```sql
 SELECT *
 FROM new
@@ -196,6 +207,8 @@ WHERE new_id = ?;
 This stage is where we'd update our views, foreign keys, triggers, etc to reference the new table.
 
 ### Stop writes
+
+<img class="diagram" src="/assets/migration-drop-writes.svg" alt="Drop writes" width="50%" >
 
 Now that we've switch all reads over to the new system, we no longer need to update the old database. Our new write operations:
 
@@ -220,6 +233,8 @@ WHERE new_id = ?;
 
 When we're confident that our system no longer references the old table, we can drop it.
 
+<img class="diagram" src="/assets/migration-new-schema.svg" alt="New schema" width="50%" >
+
 ```sql
 DROP TABLE IF EXISTS old;
 ```
@@ -228,6 +243,6 @@ DROP TABLE IF EXISTS old;
 
 Congradulations! Migration Complete!
 
-<img src="/assets/its_done.gif" alt="It's done GIF">
+<img class="diagram" src="/assets/its_done.gif" alt="It's done GIF">
 
 Now the hardest part: explaining to product why their seemingly small request took 3x longer than expected. If it helps you can send them this article. Good luck!
