@@ -11,6 +11,17 @@
   <meta name="author" content="{{ site.author }}" />
   <meta name="copyright" content="&copy; {{ site.name }}{{ site.author }} {{ site.time | date: '%Y' }}" />
 
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet" async /> -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JFH9S31EP1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-JFH9S31EP1');
+  </script>
+
   <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
 </head>
