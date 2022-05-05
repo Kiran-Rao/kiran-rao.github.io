@@ -116,6 +116,11 @@ hr {
   z-index: -100;
 }
 
+.diagram {
+  margin: auto;
+  display: block;
+}
+
 @media only screen and (min-width: 45rem) {
   .wrapper {
     padding: 0 1.5rem;
