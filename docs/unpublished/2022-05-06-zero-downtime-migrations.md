@@ -1,16 +1,17 @@
 ---
 layout: post
 title: 'Changing Tires at 100mph: A Guide to Zero Downtime Migrations'
-date: 2022-04-22
+date: 2022-05-06
 author: Kiran Rao
 ---
 
-At The League, a common task was migrating a database schema.
-This was done to improve query performance, change column names/types, or to adapt data to new use cases.
-While this may seem like a straightforward set of SQL commands, it becomes a complex coreographed dance on production to be achieved with zero downtime.
+As a backend developer at a mobile app company, a common task was migrating a database schema.
+This could be to improve query performance, change column names/types, or to adapt data to new use cases.
+While this may seem like a straightforward set of SQL commands, it becomes a complex coreographed dance to be achieved with zero downtime.
+
 The steps are as follows:
 
-1. Create the new table
+1. Create the new empty table
 1. Write to both old and new table
 1. Copy data (in chunks) from old to new
 1. Validate consistency
@@ -18,13 +19,15 @@ The steps are as follows:
 1. Stop writes to the old table
 1. Cleanup old table
 
-This guide will go through the step by step process of migrating a table `old` to `new` in PostgreSQL. While the examples are for a PostgreSQL table migration, the same steps can apply to almost any migration. Normalized schema design, index selection, and performance optimization are outside the scope of this guide.
+This guide will go through the step by step process of migrating a table `old` to `new` in PostgreSQL. While the examples are for a PostgreSQL table migration, the same steps can apply to almost any migration.
 
 ## Background
 
 ### Existing Schema
 
-Let's assume we're given an existing schema with a table named `old`:
+Let's suppose we have an existing schema with a table named `old`, with an API that runs CRUD oprations against the table.
+
+<img class="diagram" src="/assets/migration-old-schema.svg" alt="Old" width="50%" >
 
 ```sql
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
@@ -34,10 +37,6 @@ CREATE TABLE IF NOT EXISTS old (
     data TEXT NOT NULL
 );
 ```
-
-We also have an API that can run the following CRUD operations against the table:
-
-<img class="diagram" src="/assets/migration-old-schema.svg" alt="Old" width="50%" >
 
 ```sql
 -- Create
@@ -66,8 +65,10 @@ WHERE old_id = ?;
 The `data` column was type `TEXT` for flexibility.
 It is now used exclusively for timestamps.
 We then get a request from product on a hot codepath to be count all entries between 2 timestamps.
-While this is possible with the current schema, we decided a better approach would be to update `data` to be a `TIMESTAMP` type.
+While this is possible with the current schema, we decided a better approach would be to update `data` to be of type `TIMESTAMP`.
 In addition, `old` is no longer an accurate name, and that `new` would be a lot better.
+
+Our desired schema would be something like:
 
 <img class="diagram" src="/assets/migration-new-schema.svg" alt="New schema" width="50%" >
 
@@ -85,16 +86,13 @@ CREATE TABLE IF NOT EXISTS new (
 We can further specify the requirements through the migration:
 
 - The system must fully respond to requests throughout the migration process
-- No action can take a write lock against a significant percentage of the table[^write_lock]
-- No unsafe operations [^safe_unsafe]
+- No action can take a [write lock](https://www.postgresql.org/docs/current/explicit-locking.html){:target="\_blank"} against a significant percentage of the table
+- No [unsafe operations](https://leopard.in.ua/2016/09/20/safe-and-unsafe-operations-postgresql){:target="\_blank"}
 - We must be able to roll-back any changes to the previous step if we encounter issues
-
-[^safe_unsafe]: [Safe and unsafe operations for high volume PostgreSQL](https://leopard.in.ua/2016/09/20/safe-and-unsafe-operations-postgresql)
-[^write_lock]: [Write Locks](https://www.postgresql.org/docs/current/sql-lock.html)
 
 ## Procedure
 
-### Create a new table
+### Create a new, empty table
 
 <img class="diagram" src="/assets/migration-new-table.svg" alt="Create a new table" width="50%" >
 
@@ -107,7 +105,7 @@ CREATE TABLE IF NOT EXISTS new (
 
 ### Write to both tables
 
-Now that we have two tables, we write to both simultaneously.
+Now that we have two tables, we write to both simultaneously. While the `old` table remains the source of truth, we are setting ourself up to be [eventually consistent](https://en.wikipedia.org/wiki/Eventual_consistency){:target="\_blank"}.
 
 <img class="diagram" src="/assets/migration-write-both.svg" alt="Write to both tables" width="50%" >
 
