@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Changing Tires at 100mph: A Guide to Zero Downtime Migrations'
-date: 2022-05-06
+date: 2022-05-04
 author: Kiran Rao
 ---
 
