@@ -165,11 +165,12 @@ RETURNING *;
 
 We are inserting values into the `new` table from the `old` table that don't yet exist in `new`.
 To keep the database responsive, we perform the operation in chunks with `limit 1000`.
-This can be tuned up or down depending on the table, though better to use smaller chunks and avoid large write locks.
+While chunk size can be tuned up or down depending on the table, I prefer smaller chunks are better to avoid large write locks.
 
 ### Validate consistency
 
-The often overlooked step. Before we switch over the reads, we should ensure that our data is fully in sync between tables. Here are a few sample queries to validate. The most common culpret was a system we never knew about was writing to this table.
+The often overlooked step. Before we switch over the reads, we should ensure that our data is fully in sync between tables.
+Here are a few sample queries to validate consistency between `old` and `new`.
 
 Are we missing any records?
 
@@ -192,7 +193,9 @@ WHERE CAST(data AS TIMESTAMP) <> created_date
 
 ### Switch reads
 
-This is usually the hardest step, since we often have reads in may different places. Since that data is in sync between tables, we can take our time with this part of the migration.
+This is usually the most burdensome step.
+There are often dozens different code paths reading from the table.
+Since that data is in sync between tables, we can take our time with this part of the migration.
 
 <img class="diagram" src="/assets/migration-switch-reads.svg" alt="Switch reads" width="50%" >
 
@@ -202,13 +205,13 @@ FROM new
 WHERE new_id = ?;
 ```
 
-This stage is where we'd update our views, foreign keys, triggers, etc to reference the new table.
+This stage is where we'd update any views, foreign keys, triggers, etc to reference the new table.
 
 ### Stop writes
 
-<img class="diagram" src="/assets/migration-drop-writes.svg" alt="Drop writes" width="50%" >
+Now that we've switch all reads over to the new system, we no longer need to update the old database.
 
-Now that we've switch all reads over to the new system, we no longer need to update the old database. Our new write operations:
+<img class="diagram" src="/assets/migration-drop-writes.svg" alt="Drop writes" width="50%" >
 
 ```sql
 -- Create
@@ -243,4 +246,4 @@ Congradulations! Migration Complete!
 
 <img class="diagram" src="/assets/its_done.gif" alt="It's done GIF">
 
-Now the hardest part: explaining to product why their seemingly small request took 3x longer than expected. If it helps you can send them this article. Good luck!
+Now the most challenging part: explaining to product why their seemingly small request took 3x longer than expected. If it helps you can send them this article. Good luck!
