@@ -25,7 +25,7 @@ This guide will go through the step-by-step process of migrating tables in Postg
 
 ### Existing Schema
 
-Let's suppose we have an existing schema with a table named `old`, with an API that runs CRUD opretions against the table.
+Let's suppose we have an existing schema with a table named `old`, with an API that runs CRUD operations against the table.
 
 <img class="diagram" src="/assets/migration-old-schema.svg" alt="Old" width="50%" >
 
