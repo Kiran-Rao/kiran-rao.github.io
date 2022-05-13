@@ -6,8 +6,9 @@
 
 $text-color: #222;
 $gray-text-color: #666;
-$background-color: #fcfcfc;
-$background-accent-color: #eee;
+$background-color: #fbf9f3;
+$background-accent-color: #d8d8d8;
+$home-background-accent-color: #fefbf9;
 
 $font: 'Avenir', 'Helvetica', sans-serif;
 $font-mono: 'monaco', monospace;
@@ -111,7 +112,7 @@ hr {
   top: 0;
   left: 0;
   border-width: 50vh 100vw 0 0;
-  border-color: #fff transparent transparent transparent;
+  border-color: $home-background-accent-color transparent transparent transparent;
   border-style: solid;
   z-index: -100;
 }
