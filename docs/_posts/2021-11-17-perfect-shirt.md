@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'One Engineers quest for the prefect t-shirt'
+title: 'One Engineer's quest for the perfect t-shirt'
 date: 2021-11-17
 author: Kiran Rao
 ---
