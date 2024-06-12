@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Changing Tires at 100mph: A Guide to Zero Downtime Migrations'
+title: 'Changing tires at 100mph: A guide to zero downtime migrations'
 date: 2022-05-04
 author: Kiran Rao
 ---
@@ -23,7 +23,7 @@ This guide will go through the step-by-step process of migrating tables in Postg
 
 ## Background
 
-### Existing Schema
+### Existing schema
 
 Let's suppose we have an existing schema with a table named `old`, with an API that runs CRUD operations against the table.
 
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS new (
 );
 ```
 
-### Migration Requirements
+### Migration requirements
 
 We can further specify the requirements through the migration:
 

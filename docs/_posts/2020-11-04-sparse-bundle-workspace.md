@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Setup a Development Workspace with a Sparse Bundle'
+title: 'Setup a development workspace with a sparse bundle'
 date: 2020-11-04
 author: Kiran Rao
 ---
@@ -8,10 +8,10 @@ author: Kiran Rao
 A sparse bundle is a macOS file that stores the contents and structure of a full file system. When mounted, macOS will create a logical volume allowing you to access files the same way you would a USB stick or SSD partition. There are a number of advantages to having your development environment setup within a sparse bundle:
 
 - Keeps projects together in one place.
-- If you work for multiple clients, each one can have an isolated disk image. 
+- If you work for multiple clients, each one can have an isolated disk image.
 - Can get your development environment closer to production
 
-## Create a Sparse Bundle
+## Create a sparse bundle
 
 ```sh
 hdiutil create \
