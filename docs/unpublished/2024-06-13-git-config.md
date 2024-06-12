@@ -1,13 +1,13 @@
 ---
 layout: post
-title: 'My .gitconfig file'
+title: 'My .gitconfig file disected'
 date: 2024-06-13
 author: Kiran Rao
 ---
 
 This is my .gitconfig. Many are like it, but this one is mine.
 
-It's not long. It's not complicated. But I will break down each piece and why it's important.
+It's not long. It's not complicated. But it configures my most important tool. I will be breaking down piece by piece to better understand what I'm configuring and why it's important.
 
 ```sh
 [user]
