@@ -7,7 +7,19 @@ The content for the site is located in `docs/`
 https://jekyllrb.com/docs/installation/macos/
 
 ```sh
-export SDKROOT=$(xcrun --show-sdk-path)
+# Install Ruby
+brew install chruby ruby-install xz
+ruby-install ruby 3.1.3
+
+# Configure Env for Ruby
+echo "source $(brew --prefix)/opt/chruby/share/chruby/chruby.sh" >> ~/.zshrc
+echo "source $(brew --prefix)/opt/chruby/share/chruby/auto.sh" >> ~/.zshrc
+echo "chruby ruby-3.1.3" >> ~/.zshrc # run 'chruby' to see actual version
+
+# Restart, check ruby version
+ruby -v
+
+# Install
 bundle install
 ```
 
