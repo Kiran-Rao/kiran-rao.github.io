@@ -35,3 +35,53 @@ It's not long. It's not complicated. But it configures the most important tool i
 	git = !exec git
 	gti = !exec git
 ```
+
+## What is .gitconfig
+
+## User section
+
+```sh
+[user]
+	name = Kiran Rao
+	email = hi@kiranrao.ca
+```
+
+## GPG key signing
+
+```sh
+	signingkey = AAAAABBBBBB
+
+[gpg]
+	program = gpg
+
+[commit]
+	gpgSign = true
+```
+
+## Alias common actions
+
+```sh
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	di = diff
+	fp = fetch --prune
+	rb = rebase
+```
+
+## Pretty commit history
+
+```sh
+	hist = log --graph --abbrev-commit --decorate --date=short \
+		--format=format:'%C(bold cyan)%h%C(reset) %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)%an%C(reset) %C(bold yellow)%d%C(reset)' \
+		--branches --remotes --tags
+```
+
+## Time-saving typos
+
+```sh
+	git = !exec git
+	gti = !exec git
+```
