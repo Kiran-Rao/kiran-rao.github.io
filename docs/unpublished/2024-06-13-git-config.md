@@ -19,7 +19,7 @@ It's not long. It's not complicated. But it configures the most important tool i
 	program = gpg
 
 [commit]
-	gpgSign = true
+	gpgsign = true
 
 [alias]
 	co = checkout
@@ -55,7 +55,7 @@ It's not long. It's not complicated. But it configures the most important tool i
 	program = gpg
 
 [commit]
-	gpgSign = true
+	gpgsign = true
 ```
 
 ## Alias common actions
