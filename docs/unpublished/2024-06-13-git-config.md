@@ -7,7 +7,7 @@ author: Kiran Rao
 
 This is my .gitconfig. Many are like it, but this one is mine.
 
-It's not long. It's not complicated. But it configures the most important tool in my workflow. I will be disecting the file to better understand my configurations and how git itself works.
+It's not long. It's not complicated. But it configures my workflow's most important tool. I will disect the file to better understand how git works.
 
 ```sh
 [user]
