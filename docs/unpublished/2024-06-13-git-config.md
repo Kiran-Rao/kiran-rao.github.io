@@ -134,6 +134,8 @@ Put it all together and it looks something like:
 
 <img class="diagram" src="/assets/gitconfig-hist.png" alt="terminal screenshot of the alias git hist " width="50%" >
 
+This alias is especially useful when I was new to git. It let me quickly see what happened after a merge, rebase or cherry-pick operation. It's also an indespenible tool when debugging failed operations. You can see exactly what the state of the repo is.
+
 ## Time-saving aliases
 
 ```sh
