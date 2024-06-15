@@ -48,7 +48,19 @@ It's not long. It's not complicated. But it configures my workflow's most import
 
 The user section is straightforward. It's my name and email. But where is it actually used?
 
-The user's name and email gets included to every commit and tag. This is clearly visible using `git log`. For example, running `git log` right now shows:
+The user's name and email gets included to every commit and tag. This is clearly visible using `git log`. Running `git log` right now shows:
+
+```sh
+commit ce97934132deb2b322c54de68ccbc1d402ca18e4 (HEAD -> git-config)
+Author: Kiran Rao <hi@kiranrao.ca>
+Date:   Fri Jun 14 20:31:03 2024 -0400
+
+    WIP: User section
+```
+
+This also yields a useful insight: It's easy to change my name and email per repo. Separate work and personal, or multiple clients is a good use case.
+
+It also leads to another insight: Nothing stops me from changing my user name and email to anything. Nothing stops anyone from changing their name and email to mine. Luckly we have a system to stop that.
 
 ## GPG key signing
 
