@@ -109,17 +109,30 @@ I cannot go in-depth into how GPG signing works. [How (and why) to sign Git comm
 	rb = rebase
 ```
 
-Git aliases allow me to quickly run longer, complex git commands. I've aliased my most comomnly run commands to be a little faster/use fewer keystrokes.
+Git aliases allow me to quickly run longer, complex git commands with fewer keystrokes. I've aliased common commands to be a little faster.
 
 ## Pretty commit history
 
 ```sh
 	hist = log --graph --abbrev-commit --decorate --date=short \
-		--format=format:'%C(bold cyan)%h%C(reset) %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)%an%C(reset) %C(bold yellow)%d%C(reset)' \
 		--branches --remotes --tags
+		--format=format:'%C(bold cyan)%h%C(reset) %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)%an%C(reset) %C(bold yellow)%d%C(reset)' \
 ```
 
-An under rated feature within git is `git log`. While a normal git log will show a linear history of how
+An under rated feature of git is `git log`. While a normal `git log` will show a linear history, it can be configured to show way more.
+
+- `--graph`: Shows
+- `--abbrev-commit`: Shortens commit length
+- `--decorate`: Short for `--derocate:sort`. `refs/` prefix will be ommitted
+- `--date=shot`: Shortens date
+- `--branches`: Shows all branches, not just the curent branch.
+- `--remotes`: Shows the local copy of all remote barnches.
+- `--tags`: Shows tags
+- `--format=format:'...'` Applies a fancy format that I copied from somewhere years ago. `--oneline` is equivalent (but doesn't look as good)
+
+Put it all together and it looks something like:
+
+<img class="diagram" src="/assets/gitconfig-hist.png" alt="terminal screenshot of the alias git hist " width="50%" >
 
 ## Time-saving aliases
 
