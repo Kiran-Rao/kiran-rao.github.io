@@ -109,6 +109,8 @@ I cannot go in-depth into how GPG signing works. [How (and why) to sign Git comm
 	rb = rebase
 ```
 
+Git aliases allow me to quickly run longer, complex git commands. I've aliased my most comomnly run commands to be a little faster/use fewer keystrokes.
+
 ## Pretty commit history
 
 ```sh
@@ -117,7 +119,9 @@ I cannot go in-depth into how GPG signing works. [How (and why) to sign Git comm
 		--branches --remotes --tags
 ```
 
-## Time-saving typos
+An under rated feature within git is `git log`. While a normal git log will show a linear history of how
+
+## Time-saving aliases
 
 ```sh
 	git = !exec git
