@@ -5,7 +5,7 @@ date: 2024-06-13
 author: Kiran Rao
 ---
 
-This is my .gitconfig. Many are like it, but this one is mine.
+This is my .gitconfig\*. Many are like it, but this one is mine.
 
 It's not long. It's not complicated. But it configures my workflow's most important tool. I will disect the file to better understand my configurations and discover how git works.
 
@@ -60,7 +60,7 @@ Date:   Fri Jun 14 20:31:03 2024 -0400
 
 This also yields a useful insight: It's easy to change my name and email per repo. Separate work and personal, or multiple clients is a good use case.
 
-It also leads to another insight: Nothing stops me from changing my user name and email to anything. Nothing stops anyone from changing their name and email to mine. Luckly we have a system to stop that.
+It also leads to another insight: Nothing stops me from changing my user name and email to anything. Nothing stops anyone from changing their name and email to mine. Luckly we have GPG to mitigate that.
 
 ## GPG key signing
 
@@ -73,6 +73,8 @@ It also leads to another insight: Nothing stops me from changing my user name an
 [commit]
 	gpgsign = true
 ```
+
+GPG is a public-key cryptography system used to sign commits.
 
 ## Alias common actions
 
@@ -101,3 +103,7 @@ It also leads to another insight: Nothing stops me from changing my user name an
 	git = !exec git
 	gti = !exec git
 ```
+
+## Conclusion
+
+\*This is not actually my .gitignore. It's pretty close. I've rearranged and ommited a few pieces for clarity.
