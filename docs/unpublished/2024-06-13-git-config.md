@@ -60,7 +60,9 @@ Date:   Fri Jun 14 20:31:03 2024 -0400
 
 This also yields a useful insight: It's easy to change my name and email per repo. Separate work and personal, or multiple clients is a good use case.
 
-It also leads to another insight: Nothing stops me from changing my user name and email to anything. Nothing stops anyone from changing their name and email to mine. Luckly we have GPG to mitigate that.
+It also leads to another insight: Nothing stops me from changing my user name and email to anything.
+Nothing stops anyone from changing their name and email to mine.
+Luckly we have GPG to mitigate that.
 
 ## GPG key signing
 
@@ -74,7 +76,8 @@ It also leads to another insight: Nothing stops me from changing my user name an
 	gpgsign = true
 ```
 
-GPG is a public-key cryptography system used to sign commits. It attaches a signature to evey commit and tag. We can see this with `git log --show-signature`:
+GPG is a public-key cryptography system used to sign commits. It ensures commits published were made by me (or someone with my private key or access to my github account).
+GPG attaches a signature to evey commit. We can see this with `git log --show-signature`:
 
 ```sh
 commit da7c2d3863581f00d489c0852a91bc15ba98eae0 (HEAD -> git-config)
