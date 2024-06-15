@@ -74,7 +74,24 @@ It also leads to another insight: Nothing stops me from changing my user name an
 	gpgsign = true
 ```
 
-GPG is a public-key cryptography system used to sign commits.
+GPG is a public-key cryptography system used to sign commits. It attaches a signature to evey commit and tag. We can see this with `git log --show-signature`:
+
+```sh
+commit da7c2d3863581f00d489c0852a91bc15ba98eae0 (HEAD -> git-config)
+gpg: Signature made Fri Jun 14 21:00:11 2024 EDT
+gpg:                using EDDSA key BA8B30A6D0E47B0B447FD15DC0B595B4F1573243
+gpg: Good signature from "Tigger 2024-06-11 <hi@kiranrao.ca>" [ultimate]
+Author: Kiran Rao <hi@kiranrao.ca>
+Date:   Fri Jun 14 21:00:11 2024 -0400
+
+    Start GPG
+```
+
+Commits also appear "verified" in github, gitlab or your preferred git platform.
+
+<img class="diagram" src="/assets/gitconfig-verified.png" alt="github screenshot showing unverified and verified commit " width="50%" >
+
+I cannot go in-depth into how GPG signing works. [How (and why) to sign Git commits](https://withblue.ink/2020/05/17/how-and-why-to-sign-git-commits.html){:target="\_blank"} is an excellent article on the topic. For a practical guide on setting up GPG for a github account, [Generating a new GPG key](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key){:target="\_blank"} and [Adding a GPG key to your GitHub account](https://docs.github.com/en/authentication/managing-commit-signature-verification/adding-a-gpg-key-to-your-github-account){:target="\_blank"}
 
 ## Alias common actions
 
