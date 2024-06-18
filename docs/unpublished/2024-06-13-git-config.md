@@ -48,7 +48,7 @@ It's not long. It's not complicated. But it configures my workflow's most import
 
 The user section is straightforward. It's my name and email. But where is it actually used?
 
-The user's name and email gets included to every commit and tag. This is clearly visible using `git log`. Running `git log` right now shows:
+The user's name and email gets included to every commit and tag. This is clearly visible by running `git log`:
 
 ```sh
 commit ce97934132deb2b322c54de68ccbc1d402ca18e4 (HEAD -> git-config)
@@ -58,7 +58,7 @@ Date:   Fri Jun 14 20:31:03 2024 -0400
     WIP: User section
 ```
 
-This also yields a useful insight: It's easy to change my name and email per repo. Separate work and personal, or multiple clients is a good use case.
+The user section also yields a useful insight: It's easy to change my name and email per repo. Separate work and personal, or multiple clients is a good use case.
 
 It also leads to another insight: Nothing stops me from changing my user name and email to anything.
 Nothing stops anyone from changing their name and email to mine.
@@ -77,7 +77,7 @@ Luckly we have GPG to mitigate that.
 ```
 
 GPG is a public-key cryptography system used to sign commits. It ensures commits published were made by me (or someone with my private key or access to my github account).
-GPG attaches a signature to evey commit. We can see this with `git log --show-signature`:
+GPG attaches a signature to evey commit. We can see the signature with `git log --show-signature`:
 
 ```sh
 commit da7c2d3863581f00d489c0852a91bc15ba98eae0 (HEAD -> git-config)
@@ -109,7 +109,7 @@ I cannot go in-depth into how GPG signing works. [How (and why) to sign Git comm
 	rb = rebase
 ```
 
-Git aliases allow me to quickly run longer, complex git commands with fewer keystrokes. I've aliased common commands to be a little faster.
+Git aliases allow me to quickly run longer, complex commands with fewer keystrokes. I've aliased common commands to be a little faster.
 
 ## Pretty commit history
 
@@ -121,7 +121,7 @@ Git aliases allow me to quickly run longer, complex git commands with fewer keys
 
 An under rated feature of git is `git log`. While a normal `git log` will show a linear history, it can be configured to show way more.
 
-- `--graph`: Shows
+- `--graph`: Graphs `*--*--*` beside each commit, showing how they relate to eachother.
 - `--abbrev-commit`: Shortens commit length
 - `--decorate`: Short for `--derocate:sort`. `refs/` prefix will be ommitted
 - `--date=shot`: Shortens date
@@ -130,11 +130,14 @@ An under rated feature of git is `git log`. While a normal `git log` will show a
 - `--tags`: Shows tags
 - `--format=format:'...'` Applies a fancy format that I copied from somewhere years ago. `--oneline` is equivalent (but doesn't look as good)
 
-Put it all together and it looks something like:
+Put it together and I get a good view of my project's commit graph:
 
-<img class="diagram" src="/assets/gitconfig-hist.png" alt="terminal screenshot of the alias git hist " width="50%" >
+<img class="diagram" src="/assets/gitconfig-hist.png" alt="terminal screenshot of the alias git hist showing the commit graph" width="50%" >
 
-This alias is especially useful when I was new to git. It let me quickly see what happened after a merge, rebase or cherry-pick operation. It's also an indespenible tool when debugging failed operations. You can see exactly what the state of the repo is.
+`git hist` was especially useful as a new git user.
+I could quickly see the commit graph after a merge, rebase or cherry-pick operation.
+It's also an indespenible tool when debugging failed operations.
+I can see the exact state of each branch in the repo.
 
 ## Time-saving aliases
 
