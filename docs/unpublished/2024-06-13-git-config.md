@@ -5,7 +5,7 @@ date: 2024-06-13
 author: Kiran Rao
 ---
 
-This is my .gitconfig\*. Many are like it, but this one is mine.
+This is my .gitconfig[^1]. Many are like it, but this one is mine.
 
 It's not long. It's not complicated. But it configures my workflow's most important tool. I will disect the file to better understand my configurations and discover how git works.
 
@@ -143,6 +143,12 @@ This alias is especially useful when I was new to git. It let me quickly see wha
 	gti = !exec git
 ```
 
+I've mindlessly typed `git git status` far too many times. One approach is to punish the behavior. "I should train myself to be better at typing so that I don't make this mistake".
+
+I disagee. I don't want to be punished. Avoiding `git git` doesn't improve the structure of my thinking. So I've smoothed over that papercut. The `!exec` command executes a terminal command. In this case running `git` again with all the same arguments. It's also recursive!
+
+[gti](https://www.cyberciti.biz/linux-news/linux-unix-desktop-fun-gti-get-jeep-car-when-you-mistype-git/) is good fun, but an example of punishing the user for mistyping `gti` instead of `git`.
+
 ## Conclusion
 
-\*This is not actually my .gitignore. It's pretty close. I've rearranged and ommited a few pieces for clarity.
+[^1]: This is not actually my .gitignore. It's pretty close. I've rearranged and ommited a few pieces for clarity.
