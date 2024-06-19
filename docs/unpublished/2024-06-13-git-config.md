@@ -146,9 +146,9 @@ Put it together and I get a good view of my project's commit graph:
 <img class="diagram" src="/assets/gitconfig-hist.png" alt="terminal screenshot of the alias git hist showing the commit graph" width="50%" >
 
 `git hist` was especially useful as a new git user.
-I could quickly see the commit graph after a merge, rebase or cherry-pick operation.
-It's also an indespenible tool when debugging failed operations.
-I can see the exact state of each branch in the repo.
+I could quickly see the project's commit graph after each merge, rebase or cherry-pick operation.
+`git hist` is also indespenible when debugging failed operations.
+I now know the exact state of each branch in the repo.
 
 ## Time-saving aliases
 
@@ -161,12 +161,9 @@ I've mindlessly typed `git git status` far too many times.
 One approach is to punish the behavior.
 "I should train myself to be better at typing so that I don't make this mistake".
 
-I disagee. I don't want to be punished.
-Avoiding `git git` doesn't improve the structure of my thinking. So I've smoothed over that papercut.
-The `!exec` command executes a terminal command.
-In this case running `git` again with all the same arguments. It's also recursive!
-
-[gti](https://www.cyberciti.biz/linux-news/linux-unix-desktop-fun-gti-get-jeep-car-when-you-mistype-git/) is good fun, but an example of punishing the user for mistyping `gti` instead of `git`.
+I disagee. I shouldn't be punished for this.
+Avoiding `git git` doesn't improve the structure of my thinking. I've smoothed over this papercut using the `!exec`, which executes everything after as a terminal command.
+In this case running `git` again with all additional arguments. It's also recursive!
 
 ## Auto setup remote
 
