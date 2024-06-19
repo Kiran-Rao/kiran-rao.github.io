@@ -40,9 +40,9 @@ It's not long. It's not complicated. But it configures my workflow's most import
 
 A `.gitconfig` is a file that configures `git`. Duh.
 
-It is a set of files that tells git how it should operate. On UNIX-like computers, a user's global config is most commonly located at `~/.gitconfig`. This file gets witten when using the command `git config --global ...`. If you omit `--global`, it gets written inside the repo to `.git/config`. There's also an even higher `--system` arguent to write configurations to `/etc/gitconfig`. Don't use `--system`.
+It is a set of files that tells git how to operate. On UNIX-like systems, the user's config is located at `~/.gitconfig`. This file gets appended when running `git config --global ...`. If you omit `--global`, it writes to the repo at `.git/config`. There's also an even higher `--system` arguent. Don't use `--system`.
 
-This article disects my global git config. However, The file structure is the same at all levels
+This article disects my user's git config. However, The leanings apply at all levels.
 
 ## User section
 
@@ -115,9 +115,11 @@ I cannot go in-depth into how GPG signing works. [How (and why) to sign Git comm
 	rb = rebase
 ```
 
-Git aliases allow me to quickly run longer, complex commands with fewer keystrokes. I've aliased common commands to be a little faster.
+Git aliases allow me to run longer, complex commands with fewer keystrokes. I've aliased common commands to be slightly faster.
 
 ## Pretty commit history
+
+I've also aliased commands too long to write each time. `git hist` uses `git log` to show a project's commit graph.
 
 ```sh
 	hist = log --graph --abbrev-commit --decorate --date=short \
@@ -125,7 +127,7 @@ Git aliases allow me to quickly run longer, complex commands with fewer keystrok
 		--format=format:'%C(bold cyan)%h%C(reset) %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)%an%C(reset) %C(bold yellow)%d%C(reset)' \
 ```
 
-An under rated feature of git is `git log`. While a normal `git log` will show a linear history, it can be configured to show way more.
+While a normal `git log` will show a linear history, it can be configured to show way more.
 
 - `--graph`: Graphs `*--*--*` beside each commit, showing how they relate to eachother.
 - `--abbrev-commit`: Shortens commit length
