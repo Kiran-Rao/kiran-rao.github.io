@@ -38,6 +38,12 @@ It's not long. It's not complicated. But it configures my workflow's most import
 
 ## What is .gitconfig
 
+A `.gitconfig` is a file that configures `git`. Duh.
+
+It is a set of files that tells git how it should operate. On UNIX-like computers, a user's global config is most commonly located at `~/.gitconfig`. This file gets witten when using the command `git config --global ...`. If you omit `--global`, it gets written inside the repo to `.git/config`. There's also an even higher `--system` arguent to write configurations to `/etc/gitconfig`. Don't use `--system`.
+
+This article disects my global git config. However, The file structure is the same at all levels
+
 ## User section
 
 ```sh
