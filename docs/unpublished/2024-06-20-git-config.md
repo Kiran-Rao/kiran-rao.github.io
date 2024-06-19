@@ -63,7 +63,7 @@ The user section is straightforward. It's my name and email.
 	email = hi@kiranrao.ca
 ```
 
-But where is it actually used? The user's name and email gets included to every commit and tag. This is clearly visible when running `git log`:
+But where is it actually used? The user's name and email get included to every commit and tag. This is clearly visible when running `git log`:
 
 ```sh
 commit ce97934132deb2b322c54de68ccbc1d402ca18e4 (HEAD -> git-config)
@@ -82,7 +82,7 @@ Luckily we have GPG to mitigate that.
 ## GPG key signing
 
 GPG is a public-key cryptography system used to sign commits.
-It ensures commits published were made by me (someone with my private key or access to my github account).
+It ensures commits published were made by me (someone with my private key or access to my GitHub account).
 
 ```sh
 	signingkey = AAAAABBBBBB
@@ -113,11 +113,13 @@ Date:   Fri Jun 14 21:00:11 2024 -0400
     Start GPG
 ```
 
-Commits now appear "verified" in github, gitlab, and other git platforms.
+Commits now appear "verified" in GitHub, gitlab, and other git platforms.
 
-<img class="diagram" src="/assets/gitconfig-verified.png" alt="github screenshot showing unverified and verified commit " width="50%" >
+<img class="diagram" src="/assets/gitconfig-verified.png" alt="GitHub screenshot showing unverified and verified commit " width="50%" >
 
-I cannot go in-depth into how GPG signing works. [How (and why) to sign Git commits](https://withblue.ink/2020/05/17/how-and-why-to-sign-git-commits.html){:target="\_blank"} is an excellent article on the topic. For a practical guide on setting up GPG for a github account, [Generating a new GPG key](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key){:target="\_blank"} and [Adding a GPG key to your GitHub account](https://docs.github.com/en/authentication/managing-commit-signature-verification/adding-a-gpg-key-to-your-github-account){:target="\_blank"}
+I cannot go in-depth into how GPG signing works.
+[How (and why) to sign Git commits](https://withblue.ink/2020/05/17/how-and-why-to-sign-git-commits.html){:target="\_blank"} is an excellent article on the topic.
+For a practical guide on setting up GPG for a GitHub account, [Generating a new GPG key](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key){:target="\_blank"} and [Adding a GPG key to your GitHub account](https://docs.github.com/en/authentication/managing-commit-signature-verification/adding-a-gpg-key-to-your-github-account){:target="\_blank"}
 
 ## Alias common actions
 
@@ -140,13 +142,13 @@ I've aliased commands too long to write comfortably. `git hist` uses `git log` t
 
 ```sh
 	hist = log --graph --abbrev-commit --decorate --date=short \
-		--branches --remotes --tags
+		--branches --remotes --tags \
 		--format=format:'%C(bold cyan)%h%C(reset) %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)%an%C(reset) %C(bold yellow)%d%C(reset)' \
 ```
 
-Normal `git log` shows a linear history. It be configured to show way more.
+Normal `git log` shows a linear history. It can be configured to show way more.
 
-- `--graph`: Graphs `*--*--*` beside each commit, showing how they relate to eachother.
+- `--graph`: Graphs `*--*--*` beside each commit, showing how they relate to each other.
 - `--abbrev-commit`: Shortens commit length
 - `--decorate`: Short for `--derocate:sort`
 - `--date=short`: Shortens date
@@ -160,8 +162,8 @@ Put together, `git hist` shows my project's commit graph:
 <img class="diagram" src="/assets/gitconfig-hist.png" alt="terminal screenshot of the alias git hist showing the commit graph" width="50%" >
 
 `git hist` was especially useful as a new git user.
-I could quickly see the project's commit graph after each merge, rebase or cherry-pick operation.
-`git hist` is also indespenible when debugging failed operations.
+I could quickly see the project's commit graph after each merge, rebase, or cherry-pick.
+`git hist` is also indispensable when debugging failed operations.
 I now know the exact state of each branch in the repo.
 
 ## Time-saving aliases
