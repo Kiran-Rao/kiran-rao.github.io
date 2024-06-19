@@ -39,17 +39,19 @@ It's not long. It's not complicated. But it configures my workflow's most import
 	autoSetupRemote = true
 ```
 
-## What is .gitconfig
+## What is git config?
 
 A `.gitconfig` is a file that configures git. Duh.
 
-It is a set of files that tells git how to operate.
-On UNIX-like systems, the user's config is located at `~/.gitconfig`.
-This file gets appended when running `git config --global --add ...`.
-Omitting `--global` writes to the repo's `.git/config`.
-There's also an even higher `--system` arguent. Don't use `--system`.
+There's actually 3 files that tell git how to operate.
+Running `git config --add` will append one of these files.
+In order from lowest to highest priority:
 
-This article disects my user's git config. However, the leanings apply at all levels.
+1. System: `/etc/gitconfig`. Config that applies to all users on a system. It is configured with `--system` argument.
+1. User: `~/.gitconfig`: Config that applies to all repos of a user. It is configured with `--global` argument.
+1. Repo: `.git/config`: Config that applies to a single repo. It is configured with no arguments.
+
+This article disects my user git config. However, the configurations apply at all levels.
 
 ## User section
 
@@ -71,9 +73,9 @@ Date:   Fri Jun 14 20:31:03 2024 -0400
     WIP: User section
 ```
 
-The user section also yields a useful insight: It's easy to change my name and email per repo. Separate work and personal, or multiple clients is a good use case.
+The user section yields a useful insight: It's easy to change my name and email per repo. Separate work and personal, or multiple clients is an example use case.
 
-It also leads to another insight: Nothing stops me from changing my user name and email to anything.
+It leads to another insight: Nothing stops me from changing my user name and email to anything.
 Nothing stops anyone from changing their name and email to mine.
 Luckly we have GPG to mitigate that.
 
@@ -89,7 +91,8 @@ Luckly we have GPG to mitigate that.
 	gpgsign = true
 ```
 
-GPG is a public-key cryptography system used to sign commits. It ensures commits published were made by me (or someone with my private key or access to my github account).
+GPG is a public-key cryptography system used to sign commits.
+It ensures commits published were made by me (someone with my private key or access to my github account).
 GPG attaches a signature to evey commit. We can see the signature with `git log --show-signature`:
 
 ```sh
