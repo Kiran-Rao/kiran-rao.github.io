@@ -42,7 +42,7 @@ A `.gitconfig` is a file that configures `git`. Duh.
 
 It is a set of files that tells git how to operate. On UNIX-like systems, the user's config is located at `~/.gitconfig`. This file gets appended when running `git config --global ...`. If you omit `--global`, it writes to the repo at `.git/config`. There's also an even higher `--system` arguent. Don't use `--system`.
 
-This article disects my user's git config. However, The leanings apply at all levels.
+This article disects my user's git config. However, the leanings apply at all levels.
 
 ## User section
 
@@ -154,9 +154,14 @@ I can see the exact state of each branch in the repo.
 	gti = !exec git
 ```
 
-I've mindlessly typed `git git status` far too many times. One approach is to punish the behavior. "I should train myself to be better at typing so that I don't make this mistake".
+I've mindlessly typed `git git status` far too many times.
+One approach is to punish the behavior.
+"I should train myself to be better at typing so that I don't make this mistake".
 
-I disagee. I don't want to be punished. Avoiding `git git` doesn't improve the structure of my thinking. So I've smoothed over that papercut. The `!exec` command executes a terminal command. In this case running `git` again with all the same arguments. It's also recursive!
+I disagee. I don't want to be punished.
+Avoiding `git git` doesn't improve the structure of my thinking. So I've smoothed over that papercut.
+The `!exec` command executes a terminal command.
+In this case running `git` again with all the same arguments. It's also recursive!
 
 [gti](https://www.cyberciti.biz/linux-news/linux-unix-desktop-fun-gti-get-jeep-car-when-you-mistype-git/) is good fun, but an example of punishing the user for mistyping `gti` instead of `git`.
 
