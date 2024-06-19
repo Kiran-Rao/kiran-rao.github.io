@@ -1,13 +1,13 @@
 ---
 layout: post
-title: 'My .gitconfig file disected'
+title: 'My .gitconfig file dissected'
 date: 2024-06-20
 author: Kiran Rao
 ---
 
 This is my .gitconfig[^1]. Many are like it, but this one is mine.
 
-It's not long. It's not complicated. But it configures my workflow's most important tool. I will disect the file to better understand how git works and help the reader improve their workflow.
+It's not long. It's not complicated. But it configures my workflow's most important tool. I will dissect the file to better understand how git works and help the reader improve their workflow.
 
 ```sh
 [user]
@@ -41,9 +41,9 @@ It's not long. It's not complicated. But it configures my workflow's most import
 
 ## What is git config?
 
-A `.gitconfig` is a file that configures git. Duh.
+A `.gitconfig` is a file that configures git.
 
-There's actually 3 files that tell git how to operate.
+There are actually three files that tell git how to operate.
 Running `git config --add` will append one of these files.
 In order from lowest to highest priority:
 
@@ -51,7 +51,7 @@ In order from lowest to highest priority:
 1. User: `~/.gitconfig`: Config that applies to all repos of a user. It is configured with `--global` argument.
 1. Repo: `.git/config`: Config that applies to a single repo. It is configured with no arguments.
 
-This article disects my user git config. However, the configurations apply at all levels.
+This article dissects my user git config. However, the configurations apply at all levels.
 
 ## User section
 
@@ -63,7 +63,7 @@ The user section is straightforward. It's my name and email.
 	email = hi@kiranrao.ca
 ```
 
-But where is it actually used? The user's name and email gets included to every commit and tag. This is clearly visible by running `git log`:
+But where is it actually used? The user's name and email gets included to every commit and tag. This is clearly visible when running `git log`:
 
 ```sh
 commit ce97934132deb2b322c54de68ccbc1d402ca18e4 (HEAD -> git-config)
@@ -77,7 +77,7 @@ The user section yields a useful insight: It's easy to change my name and email 
 
 It leads to another insight: Nothing stops me from changing my user name and email to anything.
 Nothing stops anyone from changing their name and email to mine.
-Luckly we have GPG to mitigate that.
+Luckily we have GPG to mitigate that.
 
 ## GPG key signing
 
@@ -100,7 +100,7 @@ The configuration instructs git:
 - `program = gpg`: The program used to sign
 - `gpgsign = true`: To automatically attach a signature to every commit
 
-We can see the signature using `git log --show-signature`:
+The signature is visible using `git log --show-signature`:
 
 ```sh
 commit da7c2d3863581f00d489c0852a91bc15ba98eae0 (HEAD -> git-config)
@@ -149,7 +149,7 @@ Normal `git log` shows a linear history. It be configured to show way more.
 - `--graph`: Graphs `*--*--*` beside each commit, showing how they relate to eachother.
 - `--abbrev-commit`: Shortens commit length
 - `--decorate`: Short for `--derocate:sort`
-- `--date=shot`: Shortens date
+- `--date=short`: Shortens date
 - `--branches`: Shows all branches, not just the curent branch.
 - `--remotes`: Shows the local copy of all remote branches.
 - `--tags`: Shows tags
@@ -170,7 +170,7 @@ I've mindlessly typed `git git status` far too many times.
 One approach is to punish the behavior.
 "I should train myself to be better at typing so that I don't make this mistake".
 
-I disagree. Avoiding `git git` doesn't improve the structure of my thinking. I can instead smooth over the paprcut.
+I disagree. Avoiding `git git` doesn't improve the structure of my thinking. Instead, I smooth over the papercut.
 
 ```sh
 	git = !exec git
@@ -191,17 +191,15 @@ To push the current branch and set the remote as upstream, use
     git push --set-upstream origin new-branch
 ```
 
-This is dumb. If a local branch doesn't have an upsteam branch, I always want to create one.
+This is dumb. If a local branch doesn't have an upstream branch, I always want to create one.
 
 ```sh
 [push]
 	autoSetupRemote = true
 ```
 
-Setting `autoSetupRemote = true` automatically creates an upstream banch without having to use special args.
+Setting `autoSetupRemote = true` automatically creates an upstream branch without having to use special args.
 I'll never encounter this error again!
-
-But this leads to a deeper question: Why is
 
 ## Conclusion
 
