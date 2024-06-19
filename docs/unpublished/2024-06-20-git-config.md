@@ -47,9 +47,9 @@ There are actually three files that tell git how to operate.
 Running `git config --add` will append one of these files.
 In order from lowest to highest priority:
 
-1. System: `/etc/gitconfig`. Config that applies to all users on a system. It is configured with `--system` argument.
-1. User: `~/.gitconfig`: Config that applies to all repos of a user. It is configured with `--global` argument.
-1. Repo: `.git/config`: Config that applies to a single repo. It is configured with no arguments.
+1. System: `/etc/gitconfig`. Config that applies to all users on a system. It is configured with the `--system` argument.
+1. User: `~/.gitconfig`: Config that applies to all repositories of a user. It is configured with the `--global` argument.
+1. Repo: `.git/config`: Config that applies to a single repository. It is configured with no arguments.
 
 This article dissects my user git config. However, the configurations apply at all levels.
 
@@ -113,7 +113,7 @@ Date:   Fri Jun 14 21:00:11 2024 -0400
     Start GPG
 ```
 
-Commits now appear "verified" in GitHub, gitlab, and other git platforms.
+Commits now appear "verified" in GitHub, GitLab, and other git platforms.
 
 <img class="diagram" src="/assets/gitconfig-verified.png" alt="GitHub screenshot showing unverified and verified commit " width="50%" >
 
@@ -123,7 +123,7 @@ For a practical guide on setting up GPG for a GitHub account, [Generating a new 
 
 ## Alias common actions
 
-Git aliases let me to run commands with fewer keystrokes. I've aliased common commands to be slightly faster.
+Git aliases allow me to run commands with fewer keystrokes. I've aliased common commands to be slightly faster.
 
 ```sh
 [alias]
@@ -150,7 +150,7 @@ Normal `git log` shows a linear history. It can be configured to show way more.
 
 - `--graph`: Graphs `*--*--*` beside each commit, showing how they relate to each other.
 - `--abbrev-commit`: Shortens commit length
-- `--decorate`: Short for `--derocate:sort`
+- `--decorate`: Short for `--derocate:short`
 - `--date=short`: Shortens date
 - `--branches`: Shows all branches, not just the curent branch.
 - `--remotes`: Shows the local copy of all remote branches.
