@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'My .gitconfig file disected'
-date: 2024-06-13
+date: 2024-06-20
 author: Kiran Rao
 ---
 
@@ -106,7 +106,7 @@ Date:   Fri Jun 14 21:00:11 2024 -0400
     Start GPG
 ```
 
-Commits also appear "verified" in github, gitlab or your preferred git platform.
+Commits appear "verified" in github, gitlab, and other git platforms.
 
 <img class="diagram" src="/assets/gitconfig-verified.png" alt="github screenshot showing unverified and verified commit " width="50%" >
 
@@ -190,7 +190,7 @@ To push the current branch and set the remote as upstream, use
 
 This is dumb. If a local branch doesn't have an upsteam branch, I always want to create one.
 Setting `autoSetupRemote = true` automatically creates an upstream banch without having to use special args.
-I'll never encounter this error again.
+I'll never encounter this error again!
 
 ## Conclusion
 
