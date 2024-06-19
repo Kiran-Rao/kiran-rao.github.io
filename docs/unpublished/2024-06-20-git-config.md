@@ -191,7 +191,7 @@ To push the current branch and set the remote as upstream, use
     git push --set-upstream origin new-branch
 ```
 
-This is dumb. This is dumb. If a local branch doesn't have an upsteam branch, I always want to create one.
+This is dumb. If a local branch doesn't have an upsteam branch, I always want to create one.
 
 ```sh
 [push]
@@ -201,8 +201,13 @@ This is dumb. This is dumb. If a local branch doesn't have an upsteam branch, I 
 Setting `autoSetupRemote = true` automatically creates an upstream banch without having to use special args.
 I'll never encounter this error again!
 
+But this leads to a deeper question: Why is
+
 ## Conclusion
 
-Dissecting my .gitconfig file, we
+Dissecting my fairly simple .gitconfig file, we can see there's a lot going on. Hopefully you get a deeper understanding of how git works. I also hope that `.gitconfig` is now less intimidating. Now go modify your own![^2]
+
+---
 
 [^1]: This is not actually my .gitignore. It's pretty close. I've rearranged and ommited a few pieces for privacy and clarity.
+[^2]: This is not official advice. I'm not responsible, nor will I be tech support if you misconfigure git. But if you find something cool, let me know!
