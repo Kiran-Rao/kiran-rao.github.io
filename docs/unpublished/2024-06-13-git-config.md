@@ -118,11 +118,11 @@ I cannot go in-depth into how GPG signing works. [How (and why) to sign Git comm
 	rb = rebase
 ```
 
-Git aliases allow me to run longer, complex commands with fewer keystrokes. I've aliased common commands to be slightly faster.
+Git aliases let me to run commands with fewer keystrokes. I've aliased common commands to be slightly faster.
 
 ## Pretty commit history
 
-I've also aliased commands too long to write each time. `git hist` uses `git log` to show a project's commit graph.
+I've aliased commands too long to write comfortably. `git hist` uses `git log` to show a project's commit graph.
 
 ```sh
 	hist = log --graph --abbrev-commit --decorate --date=short \
@@ -184,8 +184,10 @@ To push the current branch and set the remote as upstream, use
     git push --set-upstream origin new-branch
 ```
 
-This is dumb. If a branch doesn't have an upsteam branch, I always want to create one. Setting `autoSetupRemote = true` automatically does this for me.
+This is dumb. If a branch doesn't have an upsteam branch, I always want to create one.
+Setting `autoSetupRemote = true` automatically creates an upstream banch without having to use special args.
+I'll never encounter this error again.
 
 ## Conclusion
 
-[^1]: This is not actually my .gitignore. It's pretty close. I've rearranged and ommited a few pieces for clarity.
+[^1]: This is not actually my .gitignore. It's pretty close. I've rearranged and ommited a few pieces for privacy and clarity.
