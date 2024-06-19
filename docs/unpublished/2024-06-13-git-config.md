@@ -7,7 +7,7 @@ author: Kiran Rao
 
 This is my .gitconfig[^1]. Many are like it, but this one is mine.
 
-It's not long. It's not complicated. But it configures my workflow's most important tool. I will disect the file to better understand my configurations and discover how git works.
+It's not long. It's not complicated. But it configures my workflow's most important tool. I will disect the file to appreciate my configurations and better understand how git works.
 
 ```sh
 [user]
@@ -41,9 +41,13 @@ It's not long. It's not complicated. But it configures my workflow's most import
 
 ## What is .gitconfig
 
-A `.gitconfig` is a file that configures `git`. Duh.
+A `.gitconfig` is a file that configures git. Duh.
 
-It is a set of files that tells git how to operate. On UNIX-like systems, the user's config is located at `~/.gitconfig`. This file gets appended when running `git config --global ...`. If you omit `--global`, it writes to the repo at `.git/config`. There's also an even higher `--system` arguent. Don't use `--system`.
+It is a set of files that tells git how to operate.
+On UNIX-like systems, the user's config is located at `~/.gitconfig`.
+This file gets appended when running `git config --global --add ...`.
+Omitting `--global` writes to the repo's `.git/config`.
+There's also an even higher `--system` arguent. Don't use `--system`.
 
 This article disects my user's git config. However, the leanings apply at all levels.
 
@@ -181,7 +185,7 @@ To push the current branch and set the remote as upstream, use
     git push --set-upstream origin new-branch
 ```
 
-This is dumb. If a branch doesn't have an upsteam branch, I always want to create one.
+This is dumb. If a local branch doesn't have an upsteam branch, I always want to create one.
 Setting `autoSetupRemote = true` automatically creates an upstream banch without having to use special args.
 I'll never encounter this error again.
 
