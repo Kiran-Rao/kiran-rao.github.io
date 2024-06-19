@@ -34,6 +34,9 @@ It's not long. It's not complicated. But it configures my workflow's most import
 		--branches --remotes --tags
 	git = !exec git
 	gti = !exec git
+
+[push]
+	autoSetupRemote = true
 ```
 
 ## What is .gitconfig
@@ -164,6 +167,24 @@ The `!exec` command executes a terminal command.
 In this case running `git` again with all the same arguments. It's also recursive!
 
 [gti](https://www.cyberciti.biz/linux-news/linux-unix-desktop-fun-gti-get-jeep-car-when-you-mistype-git/) is good fun, but an example of punishing the user for mistyping `gti` instead of `git`.
+
+## Auto setup remote
+
+```sh
+[push]
+	autoSetupRemote = true
+```
+
+This is another time saver. If I create and push a branch, I'll often run into the error:
+
+```sh
+fatal: The current branch new-branch has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin new-branch
+```
+
+This is dumb. If a branch doesn't have an upsteam branch, I always want to create one. Setting `autoSetupRemote = true` automatically does this for me.
 
 ## Conclusion
 
