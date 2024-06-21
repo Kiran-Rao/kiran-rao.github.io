@@ -210,4 +210,4 @@ Dissecting my fairly simple .gitconfig file, we can see there's a lot going on. 
 ---
 
 [^1]: This is not actually my .gitignore. It's pretty close. I've rearranged and ommited a few pieces for privacy and clarity.
-[^2]: This is not official advice. I'm not responsible, nor will I be tech support if you misconfigure git. But if you find something cool, let me know!
+[^2]: This is not legal advice. I'm not responsible, nor will I be tech support if you misconfigure git. But if you find something cool, let me know!
