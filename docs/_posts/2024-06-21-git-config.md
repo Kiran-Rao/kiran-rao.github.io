@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'My .gitconfig file dissected'
-date: 2024-06-20
+date: 2024-06-21
 author: Kiran Rao
 ---
 
