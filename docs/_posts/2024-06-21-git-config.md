@@ -212,4 +212,4 @@ Dissecting my simple .gitconfig file reveals a lot. Hopefully you now have a dee
 ---
 
 [^1]: This is not actually my .gitignore. It's pretty close. I've rearranged and ommited a few pieces for privacy and clarity.
-[^2]: This is not legal advice. I'm not responsible, nor will I be tech support if you misconfigure git. But if you find something cool, let me know!
+[^2]: This is not legal advice. I'm not responsible, nor will I be tech support if you misconfigure git. But if you find something cool, <a class="link" href="mailto:hi@kiranrao.ca" target="_blank" rel="noopener">let me know</a>!
