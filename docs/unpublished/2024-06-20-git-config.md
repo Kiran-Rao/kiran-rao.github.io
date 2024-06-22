@@ -7,7 +7,7 @@ author: Kiran Rao
 
 This is my .gitconfig[^1]. Many are like it, but this one is mine.
 
-It's not long. It's not complicated. But it configures my workflow's most important tool. I will dissect the file to better understand how git works and help the reader improve their workflow.
+It's not long. It's not complicated. But it configures my workflow's most important tool. I will dissect the file to better understand how git works and help the reader improve their own workflow.
 
 ```sh
 [user]
@@ -205,7 +205,7 @@ I'll never encounter this error again!
 
 ## Conclusion
 
-Dissecting my fairly simple .gitconfig file, we can see there's a lot going on. Hopefully you get a deeper understanding of how git works. I also hope that `.gitconfig` is now less intimidating. Now go modify your own![^2]
+Dissecting my simple .gitconfig file reveals a lot. Hopefully you now have a deeper understanding of git and how to use it. I also hope `.gitconfig` has become less intimidating. Go modify your own![^2]
 
 ---
 
