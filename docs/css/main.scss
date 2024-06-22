@@ -10,12 +10,12 @@ $background-color: #fbf9f3;
 $background-accent-color: #d8d8d8;
 $home-background-accent-color: #fefbf9;
 
-$font: 'Avenir', 'Helvetica', sans-serif;
+$font-body: 'Avenir', 'Helvetica', sans-serif;
 $font-mono: 'monaco', monospace;
 
 body {
   margin: 0;
-  font-family: $font;
+  font-family: $font-body;
   background-color: $background-color;
   color: $text-color;
   -webkit-font-smoothing: antialiased;
@@ -120,6 +120,11 @@ hr {
 .diagram {
   margin: auto;
   display: block;
+}
+
+hr {
+  width: 180px;
+  margin-left: 0;
 }
 
 @media only screen and (min-width: 45rem) {
