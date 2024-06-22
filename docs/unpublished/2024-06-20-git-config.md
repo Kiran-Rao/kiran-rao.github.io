@@ -41,21 +41,21 @@ It's not long. It's not complicated. But it configures my workflow's most import
 
 ## What is git config?
 
-A `.gitconfig` is a file that configures git.
+A `.gitconfig` is a file that configures git. But it's not the only one.
 
-There are actually three files that tell git how to operate.
+There are three files that tell git how to operate.
 Running `git config --add` will append one of these files.
 In order from lowest to highest priority:
 
-1. System: `/etc/gitconfig`. Config that applies to all users on a system. It is configured with the `--system` argument.
-1. User: `~/.gitconfig`: Config that applies to all repositories of a user. It is configured with the `--global` argument.
-1. Repo: `.git/config`: Config that applies to a single repository. It is configured with no arguments.
+1. System: `/etc/gitconfig`. Applies to all users on a system. It is configured with the `--system` argument.
+1. User: `~/.gitconfig`: Applies to all repositories of a user. It is configured with the `--global` argument.
+1. Repo: `.git/config`: Applies to a single repository. It is configured with no arguments.
 
 This article dissects my user git config. However, the configurations apply at all levels.
 
 ## User section
 
-The user section is straightforward. It's my name and email.
+The user section is my name and email.
 
 ```sh
 [user]
@@ -123,7 +123,7 @@ For a practical guide on setting up GPG for a GitHub account, [Generating a new 
 
 ## Alias common actions
 
-Git aliases allow me to run commands with fewer keystrokes. I've aliased common commands to be slightly faster.
+I use Git aliases for common commands to save keystrokes.
 
 ```sh
 [alias]
@@ -135,6 +135,8 @@ Git aliases allow me to run commands with fewer keystrokes. I've aliased common 
 	fp = fetch --prune
 	rb = rebase
 ```
+
+While each alias only saves a few moments, it quickly adds up.
 
 ## Pretty commit history
 
