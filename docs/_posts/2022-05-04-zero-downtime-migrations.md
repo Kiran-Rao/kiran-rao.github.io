@@ -86,8 +86,8 @@ CREATE TABLE IF NOT EXISTS new (
 We can further specify the requirements through the migration:
 
 - The system must fully respond to requests throughout the migration process
-- No action can take a [write lock](https://www.postgresql.org/docs/current/explicit-locking.html){:target="\_blank"} against a significant percentage of the table
-- No [unsafe operations](https://leopard.in.ua/2016/09/20/safe-and-unsafe-operations-postgresql){:target="\_blank"}
+- No action can take a [write lock](https://www.postgresql.org/docs/current/explicit-locking.html){:target="\_blank"}{:rel="noopener"} against a significant percentage of the table
+- No [unsafe operations](https://leopard.in.ua/2016/09/20/safe-and-unsafe-operations-postgresql){:target="\_blank"}{:rel="noopener"}
 - We must be able to roll back any changes to the previous step if we encounter issues
 
 ## Procedure
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS new (
 
 ### Write to both tables
 
-Now that we have two tables, we write to both simultaneously. While the `old` table remains the source of truth, we are setting ourselves up to be [eventually consistent](https://en.wikipedia.org/wiki/Eventual_consistency){:target="\_blank"}.
+Now that we have two tables, we write to both simultaneously. While the `old` table remains the source of truth, we are setting ourselves up to be [eventually consistent](https://en.wikipedia.org/wiki/Eventual_consistency){:target="\_blank"}{:rel="noopener"}.
 
 <img class="diagram" src="/assets/migration-write-both.svg" alt="Write to both tables" width="50%" >
 
