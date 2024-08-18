@@ -118,8 +118,8 @@ Commits now appear "verified" in GitHub, GitLab, and other git platforms.
 <img class="diagram" src="/assets/gitconfig-verified.png" alt="GitHub screenshot showing unverified and verified commit " width="50%" >
 
 I cannot go in-depth into how GPG signing works.
-[How (and why) to sign Git commits](https://withblue.ink/2020/05/17/how-and-why-to-sign-git-commits.html){:target="\_blank"} is an excellent article on the topic.
-For a practical guide on setting up GPG for a GitHub account, [Generating a new GPG key](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key){:target="\_blank"} and [Adding a GPG key to your GitHub account](https://docs.github.com/en/authentication/managing-commit-signature-verification/adding-a-gpg-key-to-your-github-account){:target="\_blank"}
+[How (and why) to sign Git commits](https://withblue.ink/2020/05/17/how-and-why-to-sign-git-commits.html){:target="\_blank"}{:rel="noopener"} is an excellent article on the topic.
+For a practical guide on setting up GPG for a GitHub account, [Generating a new GPG key](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key){:target="\_blank"}{:rel="noopener"} and [Adding a GPG key to your GitHub account](https://docs.github.com/en/authentication/managing-commit-signature-verification/adding-a-gpg-key-to-your-github-account){:target="\_blank"}{:rel="noopener"}
 
 ## Alias common actions
 
