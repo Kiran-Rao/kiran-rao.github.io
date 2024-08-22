@@ -10,6 +10,7 @@ Here are a few recipes that I've found and liked. Let me know if any of these li
 - [Chicken satay with peanut sauce](https://damndelicious.net/wprm_print/chicken-satay-with-peanut-sauce-2/){:target="\_blank"}{:rel="noopener"}
 - [Greek chicken Souvlaki recipe with Tzatziki](https://www.themediterraneandish.com/greek-chicken-souvlaki-recipe-tzatziki/print/14578/){:target="\_blank"}{:rel="noopener"}
 - [Korean chicken thighs](https://www.foxandbriar.com/wprm_print/korean-chicken-thighs){:target="\_blank"}{:rel="noopener"}
+- Jerk Chicken - WIP
 
 ## Other mains
 
@@ -26,5 +27,8 @@ Here are a few recipes that I've found and liked. Let me know if any of these li
 ## Other Desserts
 
 - [Golden rum cake](https://www.allrecipes.com/recipe/17456/golden-rum-cake/#mm-recipes-structured-ingredients__heading_1-0){:target="\_blank"}{:rel="noopener"}
+- Banana Bread - WIP
+- Brownies - WIP
+- Pumpkin Pie - WIP
 
-_Last updated 2024-08-18_
+_Last updated 2024-08-21_
