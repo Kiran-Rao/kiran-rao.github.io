@@ -3,7 +3,7 @@ layout: post
 title: Kiran's select recipes
 ---
 
-Here are a few recipes that I've found and liked. Let me know if any of these links break at [hi@kiranrao.ca](mailto:hi@kiranrao.ca).
+Here are a few recipes that I've found and liked. Let me know if any of these links break at {% include email.html %}.
 
 ## Chicken
 

@@ -11,6 +11,8 @@ author: 'Kiran Rao'
 description: 'Hi, my name is Kiran.'
 url: 'https://kiranrao.ca'
 markdown: kramdown
+repo: 'https://github.com/Kiran-Rao/kiran-rao.github.io'
+siteDirectory: 'https://github.com/Kiran-Rao/kiran-rao.github.io/tree/master'
 
 # Exclude unpublished files from sitemap
 defaults:
