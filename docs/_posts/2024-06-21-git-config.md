@@ -37,6 +37,7 @@ It's not long. It's not complicated. But it configures my workflow's most import
 
 [push]
 	autoSetupRemote = true
+	default = current
 ```
 
 ## What is git config?
@@ -200,9 +201,10 @@ This is dumb. If a local branch doesn't have an upstream branch, I always want t
 ```sh
 [push]
 	autoSetupRemote = true
+	default = current
 ```
 
-Setting `autoSetupRemote = true` automatically creates an upstream branch without having to use special args.
+Setting `autoSetupRemote = true` and `default = current` automatically creates an upstream branch without having to use special args.
 I'll never encounter this error again!
 
 ## Conclusion
