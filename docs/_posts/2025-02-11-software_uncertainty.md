@@ -1,21 +1,22 @@
 ---
 layout: post
-title: 'Software estimation uncertanity principle'
+title: 'Software estimation uncertainty principle'
 date: 2025-02-10
 author: Kiran Rao
 ---
 
-It's often said that software estimation is impossible.
+When asked, engineers often say it's impossible to predict when their project will ship.
+
 I disagree.
-It's very possible to estimate and ship a project on a specific date.
-You do so by shipping whatever complete, even if the project is not finished.
-This gives rise to the _Software estimation uncertainty principle:_
 
-> As scope becomes exact and fixed, completion time becomes uncertain.
+It's very possible to estimate and ship a project by a due date.
+As the due date approaches, progress is inevitably slower than expected.
+This doesn't mean we can't ship by the target date.
+It's instead a prioritization decision.
+Which is more important: shipping by the due date or completing the remaining features?
 
-> As completion time becomes exact and fixed, scope becomes uncertain.
+This gives rise to the _Software estimation uncertainty principle_:
 
-<!-- > In software engineering, if the scope exact and fixed, it's impossible to know the completion time.  -->
-<!-- > Likewise, if the completion time is exact and fixed, it's impossible to know the scope.  -->
+> The scope and the completion time of a project cannot both be estimated exactly, at the same time, even in theory. The very concepts of exact scope and exact completion time together, in fact, have no meaning in nature.
 
-So when a manager says they need to know exactly when it'll be done, respond with "What scope/features can make optional to ensure we hit our estimated date"
+Next time a manager needs to know exactly when it'll be done, always ask "What scope/features are less important than hiting our deadline?"
