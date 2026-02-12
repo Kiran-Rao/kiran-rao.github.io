@@ -19,4 +19,4 @@ This gives rise to the _Software estimation uncertainty principle_:
 
 > The scope and the completion time of a project cannot both be estimated exactly, at the same time, even in theory. The very concepts of exact scope and exact completion time together, in fact, have no meaning in nature.
 
-Next time a manager needs an exactly completion time, always ask "What scope is less important than hitting our deadline?"
+Next time a manager needs an exact completion time, always ask "What scope is less important than hitting our deadline?"
